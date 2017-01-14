@@ -1,6 +1,6 @@
 # 4H-Team
 ---
-### client
+## client
 #### 사용법
 git clone을 하고 명령창에서
 > cd 4hteam/client
@@ -18,4 +18,4 @@ git clone을 하고 명령창에서
 로 접속.
 
 ---
-### server
+## server
