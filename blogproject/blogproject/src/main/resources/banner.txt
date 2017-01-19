@@ -1,0 +1,14 @@
+    __  _   __   __
+   / /_| |_|  |_|  |
+  /____   _|   _   |                       
+       |_| |__| |__| ... . BYH, KHJ, KSH, SJH
+                               
+====
+BLOG
+====
+
+Simple BOLG by 4H Team. 2017.
+
+Profile: ${spring.profiles.active}
+Database: ${spring.datasource.url}
+
