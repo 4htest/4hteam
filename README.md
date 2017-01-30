@@ -2,6 +2,9 @@
 ---
 ## client
 #### 사용법
+
+> npm install -g babel webpack webpack-dev-server
+
 git clone을 하고 명령창에서
 > cd 4hteam/client
 
