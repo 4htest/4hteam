@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Main.css';
 
 import Header from '../Header/Header';
-
+import Postview from '../Postview/Postview';
  
 class Main extends React.Component {
     componentWillMount() {
@@ -15,6 +15,7 @@ class Main extends React.Component {
                     MainContainer
                 </div>
                 <Header/>
+                <Postview/>
             </div>
         );
     }
