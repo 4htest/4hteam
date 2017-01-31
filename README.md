@@ -15,7 +15,7 @@ $ npm install
 $ npm start
 
 # 접속
-$ localhost:7777
+http://localhost:7777
 ```
 
 ---
