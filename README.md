@@ -21,12 +21,13 @@ http://localhost:7777
 ---
 ## server
 #### 사용법
+```bash
+# git clone을 하고 명령창에서 현재 경로 이동
+$ cd 4hteam/server
 
-git clone을 하고 명령창에서
-> cd 4hteam/server
+# 서버 실행후
+$ mvn spring-boot:run
 
-로 이동.
-> mvn spring-boot:run
-
-서버 실행후
-웹 브라우저 주소창에 localhost:8080 입력
+# 접속
+http://localhost:8080
+```
