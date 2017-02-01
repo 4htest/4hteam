@@ -9,7 +9,10 @@ module.exports = {
     devServer: {
         inline: true,
         port: 7777,
-        contentBase: __dirname + '/public/'
+        contentBase: __dirname + '/public/',
+        proxy: {
+            "*": "http://localhost:8080"
+        },
     },
  
     module: {
@@ -26,8 +29,6 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
-
-
             }
         ]
     },
