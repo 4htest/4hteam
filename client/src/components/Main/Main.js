@@ -3,7 +3,7 @@ import styles from './Main.css';
 
 import Header from '../Header/Header';
 import Postview from '../Postview/Postview';
-import AddBtn from '../AddBtn/AddBtn';
+import Btn from '../Btn/Btn';
 
 class Main extends React.Component {
     render(){
@@ -13,8 +13,7 @@ class Main extends React.Component {
                     MainContainer
                 </div>
                 <Header/>
-                
-                <AddBtn/>
+                <Btn/>
             </div>
         );
     }
