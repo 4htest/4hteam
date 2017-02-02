@@ -11,7 +11,7 @@ module.exports = {
         port: 7777,
         contentBase: __dirname + '/public/',
         proxy: {
-            "*": "http://localhost:8080"
+            "/api/**": "http://localhost:8080/api"
         },
     },
  
