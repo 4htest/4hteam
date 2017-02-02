@@ -3,11 +3,9 @@ import styles from './Main.css';
 
 import Header from '../Header/Header';
 import Postview from '../Postview/Postview';
- 
+import AddBtn from '../AddBtn/AddBtn';
+
 class Main extends React.Component {
-    componentWillMount() {
-    }
-    
     render(){
         return (
             <div className={styles.container}>
@@ -15,7 +13,8 @@ class Main extends React.Component {
                     MainContainer
                 </div>
                 <Header/>
-                <Postview/>
+                
+                <AddBtn/>
             </div>
         );
     }

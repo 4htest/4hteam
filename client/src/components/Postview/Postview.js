@@ -4,9 +4,9 @@ import styles from './Postview.css';
 class Postview extends React.Component {
     render(){
         return (
-	        	<div className={styles.postview}>
-	        		postview
-	        	</div>
+        	<div className={styles.postview}>
+        		postview
+        	</div>
         );
     }
 }
