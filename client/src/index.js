@@ -9,13 +9,9 @@ import { AppContainer, MainContainer, DetailContainer } from './containers';
 // Redux
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-// import { createStore, applyMiddleware } from 'redux';
-// import reducers from 'reducers';
-// import thunk from 'redux-thunk';
 
 import combineReducers from './reducers';
 const rootElement = document.getElementById('root');
-// const store = createStore(reducers, applyMiddleware(thunk));
 const store = createStore(combineReducers);
 
 ReactDOM.render(
