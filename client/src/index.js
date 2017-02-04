@@ -1,7 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './containers/main/main';
-import Write from './components/write/write';
+// Router
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
  
+// Container Components
+import { AppContainer, MainContainer, DetailContainer } from './containers';
+
+// Redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+// import { createStore, applyMiddleware } from 'redux';
+// import reducers from 'reducers';
+// import thunk from 'redux-thunk';
+
+import combineReducers from './reducers';
 const rootElement = document.getElementById('root');
-ReactDOM.render(<Main/>, rootElement);
+// const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(combineReducers);
+
+ReactDOM.render(
+	<Provider store = {store}>
+	    <Router history={browserHistory}>
+		    <Route path='/' component={AppContainer}>
+		    	<IndexRoute component={MainContainer} />
+		    	<Route path='main' component={MainContainer} />
+		    	<Route path='detail' component={DetailContainer} />
+		    </Route>
+		</Router>
+	</Provider>, rootElement
+);
