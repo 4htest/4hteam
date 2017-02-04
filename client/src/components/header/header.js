@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Header.css';
+import styles from './header.css';
  
 class Header extends React.Component {
     render(){
