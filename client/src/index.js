@@ -4,22 +4,28 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
  
 // Container Components
-import { Main, DetailContainer, Test } from './containers';
+import { AppContainer, MainContainer, DetailContainer } from './containers';
 
 // Redux
-// import { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 // import { createStore, applyMiddleware } from 'redux';
 // import reducers from 'reducers';
 // import thunk from 'redux-thunk';
-import withBasename from './config';
+
+import combineReducers from './reducers';
 const rootElement = document.getElementById('root');
 // const store = createStore(reducers, applyMiddleware(thunk));
+const store = createStore(combineReducers);
 
 ReactDOM.render(
-    <Router history={browserHistory}>
-	    <Route path='/' component={Main}>
-	    	<IndexRoute component={Test} />
-	    	<Route path='detail' component={DetailContainer} />
-	    </Route>
-	</Router>, rootElement
+	<Provider store = {store}>
+	    <Router history={browserHistory}>
+		    <Route path='/' component={AppContainer}>
+		    	<IndexRoute component={MainContainer} />
+		    	<Route path='main' component={MainContainer} />
+		    	<Route path='detail' component={DetailContainer} />
+		    </Route>
+		</Router>
+	</Provider>, rootElement
 );

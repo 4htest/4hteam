@@ -1,4 +1,5 @@
-import Main from './main/main';
+import AppContainer from './app/app.container';
 import DetailContainer from './detail/detail.container';
-import Test from './test/test';
-export { Main, DetailContainer, Test };
+import MainContainer from './main/main.container';
+
+export { AppContainer, DetailContainer, MainContainer };

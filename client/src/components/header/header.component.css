@@ -4,4 +4,10 @@
     height: 12%;
     border: 5px solid red;
     font-size: 3rem;
+    display: table;
+}
+.headerContent {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
