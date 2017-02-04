@@ -1,15 +1,4 @@
-.container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-}
- 
-.main {
-    color: white;
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
+.child {
+    position: absolute;
+    top: 12%;
 }
