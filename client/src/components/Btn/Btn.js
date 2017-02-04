@@ -27,7 +27,7 @@ class Btn extends React.Component {
         return (
         	<div>
         		<button className={styles.addbtn} onClick={this.addPostview.bind(this)}>Postview Add!</button> 
-                <button className={styles.delebtn} onClick={this.deletePostview.bind(this)}>Delete Add!</button>      		
+                <button className={styles.delebtn} onClick={this.deletePostview.bind(this)}>Delete!</button>      		
         		{this.state.show ? <Postview/> : ""}
         	</div>
         );
