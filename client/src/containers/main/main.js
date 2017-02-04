@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Main.css';
+import styles from './main.css';
 
-import Header from '../Header/Header';
-import Postview from '../Postview/Postview';
-import Btn from '../Btn/Btn';
+import Header from '../../components/header/header';
+import Postview from '../../components/postview/postview';
+import Btn from '../../components/btn/btn';
 
 class Main extends React.Component {
     render(){

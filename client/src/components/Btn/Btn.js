@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Btn.css';
+import styles from './btn.css';
 
-import Postview from '../Postview/Postview';
+import Postview from '../postview/postview';
  
 class Btn extends React.Component {
     constructor(props){

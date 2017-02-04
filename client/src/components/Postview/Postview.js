@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Postview.css';
+import styles from './postview.css';
  
 class Postview extends React.Component {
     render(){
