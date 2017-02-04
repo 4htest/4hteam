@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './components/Main/Main';
+import Main from './containers/main/main';
+import Write from './components/write/write';
  
 const rootElement = document.getElementById('root');
-ReactDOM.render(<Main />, rootElement);
+ReactDOM.render(<Main/>, rootElement);
