@@ -1,13 +1,12 @@
 import React from 'react';
-import styles from './Main.css';
+import styles from './main.css';
 
-import Header from '../Header/Header';
+import Header from '../../components/header/header';
+import Postview from '../../components/postview/postview';
+import Btn from '../../components/btn/btn';
+import Wirte from '../../components/write/write';
 
- 
 class Main extends React.Component {
-    componentWillMount() {
-    }
-    
     render(){
         return (
             <div className={styles.container}>
@@ -15,6 +14,8 @@ class Main extends React.Component {
                     MainContainer
                 </div>
                 <Header/>
+                <Btn/>
+                <Wirte/>
             </div>
         );
     }
