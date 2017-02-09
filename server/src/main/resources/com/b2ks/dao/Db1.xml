@@ -3,16 +3,15 @@
 <mapper namespace="com.b2ks.dao.Db1Mapper">
 
  	<resultMap type="Testinfo" 	 id="TestinfoMap">
- 		<id		column="no" 	 property="no"/>
- 		<result column="content"	 property="content"/>
+ 		<id		column="NO" 	 property="no"/>
+ 		<result column="CONTENT"	 property="content"/>
  		<result column="createddate"	 property="createdDate"/>
- 		<result column="subject" property="subject"/>
+ 		<result column="SUBJECT" property="subject"/>
  		<result column="writer"     property="writer"/>
  	</resultMap>
  	
  	<select id="getTestlist" resultMap="TestinfoMap">
         SELECT * FROM contents;
   </select>
-    
  
 </mapper>
