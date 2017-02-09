@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.b2ks.dao.Db1Mapper">
+
+ 	<resultMap type="Testinfo" 	 id="TestinfoMap">
+ 		<id		column="no" 	 property="no"/>
+ 		<result column="content"	 property="content"/>
+ 		<result column="createddate"	 property="createdDate"/>
+ 		<result column="subject" property="subject"/>
+ 		<result column="writer"     property="writer"/>
+ 	</resultMap>
+ 	
+ 	<select id="getTestlist" resultMap="TestinfoMap">
+        SELECT * FROM contents;
+  </select>
+    
+ 
+</mapper>
