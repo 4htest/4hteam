@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './sidebar.component.css';
-
 import { SideNav, Nav } from 'react-sidenav';
- 
-class SideBarComponent extends React.Component {
+import { Link } from 'react-router'
+
+export default class SideBarComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = { selected: 'dashboard' }
@@ -31,10 +31,12 @@ class SideBarComponent extends React.Component {
 
         return ( 
 	        	<div className={styles.sidebar}>
-					<SideNav selected={this.state.selected} navs={navi} onSelection={this.onSelection}/>
+					      <SideNav selected={this.state.selected} navs={navi} onSelection={this.onSelection}/>
+                <ul>
+                    <li><Link to="main">main</Link></li>
+                    <li><Link to="detail">detail</Link></li>
+                </ul>
 	        	</div>
         );
     }
 }
- 
-export default SideBarComponent;
