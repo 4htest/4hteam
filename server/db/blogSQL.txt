@@ -24,3 +24,21 @@ CREATE TABLE comments(
    FOREIGN KEY (post_no) REFERENCES posts (post_no)
 );
 
+Insert into categories (title) values
+('좋은글');
+
+Insert into posts (category_no, title, content_text, createdDate) values
+('1', '가방', '사랑은 단 한 번 펼친 면의 첫 줄에서
+비유된다 이제 더 이상 우연한 방식의 이야기는 없다
+이 곳에 도착했으니 가방은 조용해지고
+마음이 열리기 시작한다
+여행은 항상 당신의 궤도에 있다.', now());
+
+
+Insert into comments (post_no, content, createdDate) values
+('1', '좋은글 감사합니다.', now());
+
+Insert into comments (post_no, content, createdDate) values
+('1', '좋아요!.', now());
+
+

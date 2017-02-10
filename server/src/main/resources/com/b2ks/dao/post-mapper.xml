@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.b2ks.dao.PostMapper">
+
+ 	<resultMap type="Post" 	 id="PostMap">
+ 		<id		column="post_no" 	 property="post_no"/>
+ 		<result column="category_no"	 property="category_no"/>
+ 		<result column="title" property="title"/>
+ 		<result column="content_text" property="content_text"/>
+ 		<result column="content_mediaURL" property="content_mediaURL"/>
+ 		<result column="createdDate"	 property="createdDate"/>
+ 	</resultMap>
+ 	
+ 	<select id="getPostlist" resultMap="PostMap">
+        SELECT * FROM posts;
+  </select>
+  
+  <select id="getPost" resultType="Post" parameterType="int">
+        SELECT * FROM posts 
+        where post_no=#{no}; 
+  </select>
+  
+  <delete id="deletePost"  parameterType="int">
+        DELETE FROM posts 
+        where post_no=#{no} 
+  </delete>
+ 
+ 	<insert id="insertPost"  parameterType="Post">
+        INSERT INTO posts (category_no, title, content_text, content_mediaURL, createdDate)
+        values (#{category_no}, #{title}, #{content_text}, #{content_mediaURL}, now()); 
+  </insert>
+  
+  <update id="modifyPost"  parameterType="Post">
+      update posts set
+      title=#{title},
+  	  content_text=#{content_text},
+  	  content_mediaURL=#{content_mediaURL}, 
+  	  createdDate=now() 
+  	  where post_no=#{post_no};
+  </update>
+</mapper>
