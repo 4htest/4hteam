@@ -1,0 +1,26 @@
+CREATE TABLE categories(
+   category_no  INTEGER   NOT NULL AUTO_INCREMENT,     
+   title  VARCHAR(255),
+   PRIMARY KEY (category_no)
+);
+
+CREATE TABLE posts(
+   post_no  INTEGER   NOT NULL AUTO_INCREMENT,     
+   category_no  INTEGER,
+   title    VARCHAR(255),
+   content_text    TEXT,
+   content_mediaURL  VARCHAR(255),
+   createdDate    DATETIME,   
+   PRIMARY KEY (post_no),
+   FOREIGN KEY (category_no) REFERENCES categories (category_no)
+);
+
+CREATE TABLE comments(
+   comment_no  INTEGER   NOT NULL AUTO_INCREMENT,     
+   post_no  INTEGER,
+   content    TEXT,
+   createdDate    DATETIME,
+   PRIMARY KEY (comment_no),
+   FOREIGN KEY (post_no) REFERENCES posts (post_no)
+);
+

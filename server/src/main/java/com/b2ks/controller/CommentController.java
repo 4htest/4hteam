@@ -1,4 +1,4 @@
-package com.b2ks;
+package com.b2ks.controller;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
