@@ -34,14 +34,14 @@ public class TestController {
   }
   
   
-  @RequestMapping(value="/test", produces="application/json;charset=UTF-8")
+  @RequestMapping(value="/api/testlist", produces="application/json;charset=UTF-8")
   public @ResponseBody String hello() throws Exception{
     List<Testinfo> testList = dbService.getTestlist();
-
+    
+    
     HashMap<String,Object> result = new HashMap<>();
     result.put("list", testList);
-    return JSONObject.valueToString(new JSONObject(testList)); 
-    
+    return JSONObject.valueToString(new JSONObject(result)); 
   }
 
 }

@@ -6,5 +6,5 @@ import java.util.Map;
 import com.b2ks.model.Testinfo;
 
 public interface Db1Mapper {
-    public List<Testinfo> getTestlist(Map<String,Object> paramMap) throws Exception;
+  public List<Testinfo> getTestlist(Map<String,Object> paramMap) throws Exception;
 }
