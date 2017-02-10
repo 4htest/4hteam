@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.b2ks.dao.CommentMapper">
+
+ 	<resultMap type="Comment" 	 id="CommentMap">
+ 		<id		column="comment_no" 	 property="comment_no"/>
+ 		<result column="post_no"	 property="post_no"/>
+ 		<result column="content" property="content"/>
+ 		<result column="createdDate"	 property="createdDate"/>
+ 	</resultMap>
+ 	
+ 	<select id="getCommentlist" resultMap="CommentMap">
+        SELECT * FROM comments;
+  </select>
+  
+  <select id="getComment" resultType="Comment" parameterType="int">
+        SELECT * FROM comments 
+        where comment_no=#{no}; 
+  </select>
+  
+  <delete id="deleteComment"  parameterType="int">
+        DELETE FROM comments 
+        where comment_no=#{no} 
+  </delete>
+ 
+ 	<insert id="insertComment"  parameterType="Comment">
+        INSERT INTO comments (post_no, content, createdDate)
+        values (#{post_no}, #{content}, now()); 
+  </insert>
+  
+  <update id="modifyComment"  parameterType="Comment">
+      update comments set
+  	  content=#{content}, 
+  	  createdDate=now() 
+  	  where comment_no=#{comment_no};
+  </update>
+</mapper>
