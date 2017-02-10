@@ -1,0 +1,6 @@
+.detail {
+	border: 5px solid green;
+	width: 100%;
+	height: 88%;
+	overflow: auto;
+}

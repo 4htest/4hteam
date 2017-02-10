@@ -1,0 +1,12 @@
+.appFrame {
+    position: fixed;
+    left: 20%;
+    width: 80%;
+    height: 100%;
+}
+.appChild {
+    position: absolute;
+    top: 12%;
+    width: 100%;
+    height: 100%;
+}
