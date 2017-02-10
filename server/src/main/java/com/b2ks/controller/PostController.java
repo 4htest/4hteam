@@ -1,71 +1,128 @@
 package com.b2ks.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.b2ks.model.Post;
+import com.b2ks.model.Post;
+import com.b2ks.model.Post;
+import com.b2ks.service.PostService;
+
 @Controller
 public class PostController {
+  
+  @Autowired
+  PostService postService;
+  
   @RequestMapping(value = "/api/get/posts", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
   public @ResponseBody String getPost() {
     
-    JSONObject post;
-    JSONArray posts = new JSONArray();
-    
-    for (int i = 0; i < 4; i++) {
-      post = new JSONObject();
-      post.put("post_no", i);
-      post.put("category_no", i);
-      post.put("title", "title" + i);
-      post.put("post_text", "post_text" + i);
-      post.put("post_mediaURL", "post_mediaURL" + i);
-      post.put("createdDate", "2017-02-0" + i);
-      posts.put(post);
+    List<Post> postList;
+    HashMap<String,Object> result;
+    try {
+      postList = postService.getPostlist();
+      
+      result = new HashMap<>();
+      result.put("list", postList);
+      return JSONObject.valueToString(new JSONObject(result)); 
+    } catch (Exception e) {
+      e.printStackTrace();
+      result = new HashMap<>();
+      result.put("result","fail");
+      return JSONObject.valueToString(new JSONObject(result)); 
     }
-    return JSONObject.valueToString(posts);
   }    
   
   @RequestMapping(value = "/api/get/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
   public @ResponseBody String getPostById(int id) {
-    
-    JSONObject post;
-    post = new JSONObject();
-    post.put("post_no", id);
-    post.put("category_no", 1);
-    post.put("title", "title" + id);
-    post.put("post_text", "post_text" + id);
-    post.put("post_mediaURL", "post_mediaURL" + id);
-    post.put("createdDate", "2017-02-0" + id);
-
-    return JSONObject.valueToString(post);
+    Post post = new Post();
+    JSONObject result;
+    try {
+      post = postService.getPost(id);
+      result = new JSONObject();
+      result.put("post_no", post.getPost_no());
+      result.put("category_no", post.getCategory_no());
+      result.put("title", post.getTitle());
+      result.put("content_text", post.getContent_text());
+      result.put("content_mediaURL", post.getContent_mediaURL());
+      result.put("createdDate", post.getCreatedDate());
+      return JSONObject.valueToString(result); 
+    } catch (Exception e) {
+      e.printStackTrace();
+      result = new JSONObject();
+      result.put("result","fail");
+      return JSONObject.valueToString(result); 
+    }
   }    
   
 
   @RequestMapping(value = "/api/delete/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
   public @ResponseBody String deletePostBy(int id) {
-    
-    JSONObject post = new JSONObject();
-    post.put("result", "success");
-    return JSONObject.valueToString(post);
+    JSONObject result;
+    try {
+    postService.deletePost(id);
+    result = new JSONObject();
+    result.put("result", "success");
+    return JSONObject.valueToString(result);
+    } catch (Exception e) {
+      result = new JSONObject();
+      result.put("result", "fail");
+      return JSONObject.valueToString(result);
+    }
   }
   
   @RequestMapping(value = "/api/insert/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String insertPostBy(int id, int category_no, String title, String content_text, String mediaURL) {
+  public @ResponseBody String insertPostBy(int id, String title, String text, String media) {
     
-    JSONObject post = new JSONObject();
-    post.put("result", "success");
-    return JSONObject.valueToString(post);
+    JSONObject result;
+    try {
+      result = new JSONObject();
+      Post post = new Post();
+      post.setCategory_no(id);
+      post.setTitle(title);
+      post.setContent_text(text);
+      post.setContent_mediaURL(media);
+      postService.insertPost(post);
+      
+      result.put("result", "success");
+      return JSONObject.valueToString(result);
+    } catch (Exception e) {
+      e.printStackTrace();
+      result = new JSONObject();
+      result.put("result", "fail");
+      return JSONObject.valueToString(result);
+    }
   }    
   
   @RequestMapping(value = "/api/modify/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String modifyPostBy(int id, int category_no, String title, String content_text, String mediaURL) {
-    
-    JSONObject post = new JSONObject();
-    post.put("result", "success");
-    return JSONObject.valueToString(post);
+  public @ResponseBody String modifyPostBy(int id, int category_id, String title, String text, String media) {
+    JSONObject result;
+    try {
+      result = new JSONObject();
+      Post post = new Post();
+      post.setPost_no(id);
+      post.setCategory_no(category_id);
+      post.setTitle(title);
+      post.setContent_text(text);
+      post.setContent_mediaURL(media);
+      postService.insertPost(post);
+      
+      result.put("result", "success");
+      return JSONObject.valueToString(result);
+    } catch (Exception e) {
+      e.printStackTrace();
+      result = new JSONObject();
+      result.put("result", "fail");
+      return JSONObject.valueToString(result);
+    }
   }    
 }
 
