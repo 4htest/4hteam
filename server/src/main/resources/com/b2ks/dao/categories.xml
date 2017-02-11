@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.b2ks.dao.CategoryMapper">
+
+  <resultMap type="Category"   id="CategoryMap">
+    <id   column="category_no"    property="category_no"/>
+    <result column="title"   property="title"/>
+  </resultMap>
+  
+  <select id="getCategoryList" resultMap="CategoryMap">
+        SELECT * FROM CATEGORIES;
+  </select>
+  
+  <select id="getTitle" resultType="java.lang.String" parameterType="int">>
+    SELECT * FROM CATEGORIES WHERE category_no=#{no};
+  </select>
+ 
+   <delete id="deleteCategory"  parameterType="int">
+        DELETE FROM comments 
+        where category_no=#{no} 
+  </delete>
+ 
+  <insert id="insertCategory"  parameterType="Category">
+        INSERT INTO cateogies
+        values (#{title}); 
+  </insert>
+  
+  <update id="modifyCategory"  parameterType="Category">
+      update categories set
+      title=#{title}
+      where category_no=#{category_no};
+  </update>
+ 
+</mapper>
