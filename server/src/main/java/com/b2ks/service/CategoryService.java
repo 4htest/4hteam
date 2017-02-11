@@ -27,4 +27,12 @@ public class CategoryService {
   public void deleteCategory(int no) throws Exception {
     categoryMapper.deleteCategory(no);
   }
+  
+  public void insertCategory(Category category) throws Exception{
+    categoryMapper.insertCategory(category);
+  };
+  
+  public void modifyCategory(Category category) throws Exception{
+    categoryMapper.modifyCategory(category);
+  }
 }
