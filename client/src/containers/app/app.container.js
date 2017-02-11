@@ -4,6 +4,9 @@ import styles from './app.container.css';
 import { HeaderComponent, SideBarComponent } from '../../components';
 import DetailContainer from '../detail/detail.container';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 class AppContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -12,7 +15,7 @@ class AppContainer extends React.Component {
     render(){
         return (
             <div>
-                <SideBarComponent />
+                <SideBarComponent data={this.props.category.data}/>
                 <div className={styles.appFrame}>
                     <HeaderComponent />
                     <div className={styles.appChild}>
@@ -24,4 +27,10 @@ class AppContainer extends React.Component {
     }
 }
 
-export default AppContainer;
+const mapStateToProps = (state) => {
+    return {
+        category: state.category
+    };
+};
+
+export default connect(mapStateToProps)(AppContainer);
