@@ -7,9 +7,10 @@ export default class CategoryListComponent extends React.Component {
 	}
 
 	render() {
+
 		const item = data => {
 			return data.map(i => {
-				return <Category title={i.title}/>
+				return <Category title={i.title} />
 			});
 		};
 

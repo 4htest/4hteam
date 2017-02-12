@@ -15,7 +15,7 @@ class AppContainer extends React.Component {
     render(){
         return (
             <div>
-                <SideBarComponent data={this.props.category.data}/>
+                <SideBarComponent data={this.props.category.data} />
                 <div className={styles.appFrame}>
                     <HeaderComponent />
                     <div className={styles.appChild}>

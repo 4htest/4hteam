@@ -7,7 +7,11 @@ export default class Category extends React.Component {
 
 	render() {
 		return (
-			<div>{this.props.title}</div>
+			<div>
+				<div>
+					{this.props.title}
+				</div>
+			</div>
 		);
 	}
 }
