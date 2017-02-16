@@ -7,9 +7,7 @@ export default class ReplyComponent extends React.Component {
 
 	render() {
 		return (
-			<div>
-				{this.props.index} : bla bla bla
-			</div>
+			<div>{this.props.content}</div>
 		);
 	}
 }
