@@ -9,7 +9,6 @@ export default class SideBarDeleteComponent extends React.Component {
         };
         this.onSelection = this.onSelection.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        console.log(this.props)
     }
 
     onSelection(selection) {
@@ -18,10 +17,6 @@ export default class SideBarDeleteComponent extends React.Component {
     }	  
 
     handleClick() {
-        this.setState({
-            // selectedKey: index
-        });
-
         this.props.onDelete();
     }
 

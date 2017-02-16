@@ -7,19 +7,23 @@ export default class Category extends React.Component {
 		console.log(this.props)
 	}
 
-	handleClick(index) {
+	handleClick(title, index) {
 		this.props.onKey(index)
+		this.props.onData(title)
 
 		this.setState({
 			selectedKey: index
 		});
-		// console.log(index)
+
+		this.setState({
+			selectedData: title
+		})
 	}
 
 	render() {
 		return (
 			<div>
-				<div onClick={() => this.handleClick(this.props.index)}>
+				<div onClick={() => this.handleClick(this.props.title, this.props.index)}>
 					{this.props.title}
 				</div>
 			</div>

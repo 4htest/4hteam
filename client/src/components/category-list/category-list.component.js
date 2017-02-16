@@ -5,7 +5,7 @@ export default class CategoryListComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleKey= this.handleKey.bind(this);
-		console.log(this.props)
+		this.handleData= this.handleData.bind(this);
 	}
 
     handleKey(key) {
@@ -15,6 +15,13 @@ export default class CategoryListComponent extends React.Component {
         })
     }
 
+    handleData(data) {
+    	this.props.onData(data)
+        this.setState({
+            selectedData: data
+        })
+    }        
+
 	render() {
 
 		const item = data => {
@@ -22,7 +29,8 @@ export default class CategoryListComponent extends React.Component {
 				return (<Category  
 					title={obj.title} 
 				    index={i}
-				    onKey={this.handleKey}					
+				    onKey={this.handleKey}
+				    onData={this.handleData}					
 				/>)
 				this.props.onKey(i)
 			});
