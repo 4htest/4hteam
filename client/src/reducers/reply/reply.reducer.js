@@ -1,62 +1,40 @@
-import * as types from '../../actions/ActionTypes';
+import { CREATE, DELETE, UPDATE } from '../../actions/reply/reply.action';
 import update from 'react-addons-update';
 
 const initialState = {
     data: [
-            {id: '1', content: 'reply 1'},
-            {id: '2', content: 'reply 2'},
-            {id: '3', content: 'reply 3'},
-            {id: '4', content: 'reply 4'},
-            {id: '5', content: 'reply 5'}
+            {content: 'reply 1'},
+            {content: 'reply 2'},
+            {content: 'reply 3'},
+            {content: 'reply 4'},
+            {content: 'reply 5'}
         ]
 };
 
-export default function reply(state, action) {
-    if(typeof state === "undefined") {
-        state = initialState;
-    }
-
+ 
+export default function reply (state = initialState, action) {
     switch(action.type) {
-    case types.POST_LIST:
-        return update(state, {
-            list: {
-                status: { $set: 'WAITING' },
-            }
-        });
-    case types.POST_LIST_SUCCESS: 
-        if(action.isInitial) {
+        case CREATE:
             return update(state, {
-                list: {
-                    status: { $set: 'SUCCESS' },
-                    data: { $set: action.data },
-                    // isLast: { $set: action.data.length < 6 }
-                }
-            })
-        } else {
-            if(action.listType === 'new') {
-                return update(state, {
-                    list: {
-                        status: { $set: 'SUCCESS' },
-                        data: { $unshift: action.data },
+               data: {
+                        $push: [{content: action.content}]
                     }
-                });
-            } else {
-                return update(state, {
-                    list: {
-                        status: { $set: 'SUCCESS' },
-                        data: { $push: action.data },
-                        // isLast: { $set: action.data.length < 6 }
+            });
+        case DELETE:
+            return update(state, {
+               data: {
+                        $splice: [[state.data.indexOf(action.index), 1]]
                     }
-                });    
-            }
-        }
-    case types.POST_LIST_FAILURE:
-        return update(state, {
-            list: {
-                status: { $set: 'FAILURE' }
-            }
-        })
-    default:
+            });
+        case UPDATE:
+            return update(state, {
+               data: {
+                        [state.data.indexOf(action.index)]: {
+                            content: { $set: action.content }
+                        }
+                    }
+            });    
+        default:
             return state;
     }
-}
+};
