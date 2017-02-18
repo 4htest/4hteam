@@ -25,64 +25,59 @@ export default function category(state, action) {
 
     switch(action.type) {
     case types.CATEGORY_INSERT:
-        return update(state, {
+        return {
+            ...state,
             insert: {
-                status: { $set: 'WAITING' },
-                error: { $set: -1 }
+                status: 'WAITING',
+                error: -1
             }
-        });
+        };
     case types.CATEGORY_INSERT_SUCCESS:
-        // return update(state, {
-        //     insert: {
-        //         status: { $set: 'SUCCESS' }
-        //     }
-        // });
-        state.list.data = [...state.list.data, action.data];
-        // return state;
+        return {
+            ...state,
+            list: {
+                status: 'SUCCESS',
+                data: [
+                    ...state.list.data,
+                    action.data
+                ]
+            }
+        };
     case types.CATEGORY_INSERT_FAILURE:
-        return update(state, {
+        return {
+            ...state,
             insert: {
-                status: { $set: 'FAILURE' },
-                error: { $set: action.error }
+                status: 'FAILURE',
+                error: action.error
             }
-        });
+        };
     case types.CATEGORY_LIST:
-        return update(state, {
+        return {
+            ...state,
             list: {
-                status: { $set: 'WAITING' },
+                ...state.list,
+                status: 'WAITING'
             }
-        });
+        };
     case types.CATEGORY_LIST_SUCCESS: 
-        if(action.isInitial) {
-            return update(state, {
-                list: {
-                    status: { $set: 'SUCCESS' },
-                    data: { $set: action.data }
-                }
-            })
-        } else {
-            if(action.listType === 'new') {
-                return update(state, {
-                    list: {
-                        status: { $set: 'SUCCESS' },
-                        data: { $unshift: action.data },
-                    }
-                });
-            } else {
-                return update(state, {
-                    list: {
-                        status: { $set: 'SUCCESS' },
-                        data: { $push: action.data }
-                    }
-                });    
-            }
-        }
-    case types.CATEGORY_LIST_FAILURE:
-        return update(state, {
+        return {
+            ...state,
             list: {
-                status: { $set: 'FAILURE' }
+                status: 'SUCCESS',
+                data: [
+                    ...state.list.data,
+                    action.data
+                ]
             }
-        })
+        };
+    case types.CATEGORY_LIST_FAILURE:
+        return {
+            ...state,
+            list: {
+                ...state.list,
+                status: 'FAILURE'
+            }
+        };
     default:
             return state;
     }
