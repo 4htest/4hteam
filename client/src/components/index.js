@@ -5,5 +5,8 @@ import ReplyComponent from './reply/reply.component';
 import ReplyListComponent from './reply-list/reply-list.component';
 import CategoryListComponent from './category-list/category-list.component';
 import CategoryComponent from './category/category.component';
+import CategoryCreateComponent from './category-create/category-create.component';
 
-export { HeaderComponent, SideBarComponent, PostingComponent, ReplyComponent, ReplyListComponent, CategoryListComponent, CategoryComponent};
+export { HeaderComponent, SideBarComponent, PostingComponent, 
+	ReplyComponent, ReplyListComponent, CategoryListComponent, CategoryComponent,
+	CategoryCreateComponent };

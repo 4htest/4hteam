@@ -2,13 +2,20 @@ import * as types from '../../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
-    data: [
+    insert: {
+        status: 'INIT',
+        error: -1
+    },
+    list: {
+        status: 'INIT',
+        data: [
             {title: 'category 1'},
             {title: 'category 2'},
             {title: 'category 3'},
             {title: 'category 4'},
             {title: 'category 5'}
         ]
+    }
 };
 
 export default function category(state, action) {
@@ -17,19 +24,40 @@ export default function category(state, action) {
     }
 
     switch(action.type) {
-    case types.POST_LIST:
+    case types.CATEGORY_INSERT:
+        return update(state, {
+            insert: {
+                status: { $set: 'WAITING' },
+                error: { $set: -1 }
+            }
+        });
+    case types.CATEGORY_INSERT_SUCCESS:
+        // return update(state, {
+        //     insert: {
+        //         status: { $set: 'SUCCESS' }
+        //     }
+        // });
+        state.list.data = [...state.list.data, action.data];
+        // return state;
+    case types.CATEGORY_INSERT_FAILURE:
+        return update(state, {
+            insert: {
+                status: { $set: 'FAILURE' },
+                error: { $set: action.error }
+            }
+        });
+    case types.CATEGORY_LIST:
         return update(state, {
             list: {
                 status: { $set: 'WAITING' },
             }
         });
-    case types.POST_LIST_SUCCESS: 
+    case types.CATEGORY_LIST_SUCCESS: 
         if(action.isInitial) {
             return update(state, {
                 list: {
                     status: { $set: 'SUCCESS' },
-                    data: { $set: action.data },
-                    // isLast: { $set: action.data.length < 6 }
+                    data: { $set: action.data }
                 }
             })
         } else {
@@ -44,13 +72,12 @@ export default function category(state, action) {
                 return update(state, {
                     list: {
                         status: { $set: 'SUCCESS' },
-                        data: { $push: action.data },
-                        // isLast: { $set: action.data.length < 6 }
+                        data: { $push: action.data }
                     }
                 });    
             }
         }
-    case types.POST_LIST_FAILURE:
+    case types.CATEGORY_LIST_FAILURE:
         return update(state, {
             list: {
                 status: { $set: 'FAILURE' }
