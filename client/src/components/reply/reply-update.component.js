@@ -32,6 +32,7 @@ class ReplyUpdateComponent extends React.Component {
 		this.props.onUpdate(this.state.item);
   	}
 
+
 	render() {
 		return (
 			<div>

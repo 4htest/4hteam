@@ -12,22 +12,12 @@ class ReplyListComponent extends React.Component {
 	}
 
 	render() {
-		const item = data => {
-			return data.map(i => {
-				return (
-					<div>
-						<Reply content={i.content}/>
-						<ReplyDelete i={i}/>
-						<ReplyUpdate i={i}/><br/>
-					</div>
-				);
-			});
-		};
-
 		return (
 			<div>
-				{item(this.props.data)}
-				<ReplyCreate/>
+				<Reply data={this.props.data}
+					onCreate={this.props.onCreate}
+					onDelete={this.props.onDelete}
+					onUpdate={this.props.onUpdate}/>
 			</div>
 			
 		);

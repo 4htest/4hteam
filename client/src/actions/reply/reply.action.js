@@ -17,7 +17,6 @@ export function onDelete(item) {
 }
  
 export function onUpdate(item) {
-    console.log(item.content);
     return {
         type: UPDATE,
         index: item.index,
