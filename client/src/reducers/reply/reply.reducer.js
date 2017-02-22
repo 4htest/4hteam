@@ -1,4 +1,4 @@
-import { CREATE, DELETE, UPDATE } from '../../actions/reply/reply.action';
+import * as types from '../../actions/ActionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
