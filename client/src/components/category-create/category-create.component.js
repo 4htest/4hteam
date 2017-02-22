@@ -22,6 +22,9 @@ export default class CategoryCreateComponent extends React.Component {
 
 	addCategory() {
 		this.props.categoryInsert({title: this.state.value});
+		this.setState({
+			value: ''
+		})
 		this.toggleClick();
 	}
 
