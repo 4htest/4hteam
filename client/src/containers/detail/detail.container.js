@@ -15,6 +15,7 @@ class DetailContainer extends React.Component {
 	}
 
 	render() {
+
 		return (
 			<div className={styles.detail}>
 				<h2>detail container</h2>
@@ -23,7 +24,8 @@ class DetailContainer extends React.Component {
 					data={this.props.reply.data}
 					onCreate={this.props.onCreate}
 					onDelete={this.props.onDelete}
-					onUpdate={this.props.onUpdate}/>
+					onUpdate={this.props.onUpdate}
+					/>
 			</div>
 		);
 	}

@@ -14,10 +14,7 @@ class ReplyListComponent extends React.Component {
 	render() {
 		return (
 			<div>
-				<Reply data={this.props.data}
-					onCreate={this.props.onCreate}
-					onDelete={this.props.onDelete}
-					onUpdate={this.props.onUpdate}/>
+				<Reply data={this.props.data}/>
 			</div>
 			
 		);
@@ -29,5 +26,13 @@ let mapStateToProps = (state) => {
         data: state.reply.data
     };
 }
+
+/*let mapDispatchToProps = (dispatch) => {
+    return {
+        onCreate: (item) => dispatch(onCreate(item)),
+        onDelete: (item) => dispatch(onDelete(item)),
+        onUpdate: (item) => dispatch(onUpdate(item))
+    }
+}*/
 
 export default connect(mapStateToProps)(ReplyListComponent);
