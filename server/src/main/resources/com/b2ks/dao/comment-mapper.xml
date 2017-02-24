@@ -9,8 +9,9 @@
  		<result column="createdDate"	 property="createdDate"/>
  	</resultMap>
  	
- 	<select id="getCommentlist" resultMap="CommentMap">
-        SELECT * FROM comments;
+ 	<select id="getCommentlist" resultMap="CommentMap" parameterType="int">
+        SELECT * FROM comments
+        where post_no=#{no};
   </select>
   
   <select id="getComment" resultType="Comment" parameterType="int">
