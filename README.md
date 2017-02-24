@@ -39,27 +39,22 @@ url | method | 설명
 /api/get/categories | get | 현재 존재하는 category의 list를 json으로 가져온다.
 /api/get/category[?:id] | get | id에 해당하는 category를 json으로 가져온다.
 /api/delete/category[?:id] | post | category를 삭제한다.
-/api/insert/category[?:id&:title] | post | category를 등록한다.
+/api/insert/category[?:title] | post | category를 등록한다.
 /api/modify/category[?:id&:title] | post | category를 수정한다.
 /api/get/comments | get | 현재 존재하는 comment의 list를 json으로 가져온다.
 /api/get/comment[?:id] | get | id에 해당하는 comment를 json으로 가져온다.
 /api/delete/comment[?:id] | post | comment를 삭제한다.
-/api/insert/comment[?:id&:post] | post | comment를 등록한다.
-/api/modify/comment[?:id&:post] | post | comment를 수정한다.
-/api/get/posts | get | 현재 존재하는 post의 list를 json으로 가져온다.
+/api/insert/comment[?:id&:text] | post | comment를 등록한다. 여기서 id는 post_id를 말한다.
+/api/modify/comment[?:id&:text] | post | comment를 수정한다.
+/api/get/posts[?:id] | get | 해당 카테고리에 존재하는 post의 list를 json으로 가져온다. 여기서 id는 category_id를 말한다.
 /api/get/post[?:id] | get | id에 해당하는 post를 json으로 가져온다.
 /api/delete/post[?:id] | post | post를 삭제한다.
-/api/insert/post[?:id&:title&:text&:media] | post | post를 등록한다.
+/api/insert/post[?:id&:title&:text&:media] | post | post를 등록한다. 여기서 id는 category_id를 말한다.
 /api/modify/post[?:id&:title&:text&:media] | post | post를 수정한다.
 /api/get/Allposts | get | 현재 존재하는 모든 post를 json으로 가져온다.
 
 ---
-## DB Settings
- | value
---- | ---
-db | blogdb
-user | root
-password | 1111
+
 
 
 ## DB Tables

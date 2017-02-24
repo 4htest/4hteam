@@ -65,7 +65,7 @@ public class PostController {
   
 
   @RequestMapping(value = "/api/delete/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String deletePostBy(int id) {
+  public @ResponseBody String deletePost(int id) {
     JSONObject result;
     try {
     postService.deletePost(id);
@@ -80,13 +80,13 @@ public class PostController {
   }
   
   @RequestMapping(value = "/api/insert/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String insertPostBy(int id, String title, String text, String media) {
+  public @ResponseBody String insertPost(int category_id, String title, String text, String media) {
     
     JSONObject result;
     try {
       result = new JSONObject();
       Post post = new Post();
-      post.setCategory_no(id);
+      post.setCategory_no(category_id);
       post.setTitle(title);
       post.setContent_text(text);
       post.setContent_mediaURL(media);
@@ -103,7 +103,7 @@ public class PostController {
   }    
   
   @RequestMapping(value = "/api/modify/post", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String modifyPostBy(int id, int category_id, String title, String text, String media) {
+  public @ResponseBody String modifyPost(int id, int category_id, String title, String text, String media) {
     JSONObject result;
     try {
       result = new JSONObject();
