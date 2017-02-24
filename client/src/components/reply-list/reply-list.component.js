@@ -2,37 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styles from './reply-list.component.css';
 import Reply from '../../components/reply/reply.component';
-import ReplyCreate from '../../components/reply/reply-create.component';
-import ReplyDelete from '../../components/reply/reply-delete.component';
-import ReplyUpdate from '../../components/reply/reply-update.component';
+import ReplyCreate from '../../components/reply-create/reply-create.component';
 
-class ReplyListComponent extends React.Component {
+export default class ReplyListComponent extends React.Component {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
+		const item = data => {
+			return data.map(i => {
+				return (
+					<Reply i={i}
+						   data={this.props.data}
+						   replyDelete={this.props.replyDelete}
+						   replyUpdate={this.props.replyUpdate} />
+				);
+			});
+		};
+
 		return (
 			<div>
-				<Reply data={this.props.data}/>
+				{item(this.props.data)}
+				<ReplyCreate replyInsert={this.props.replyInsert} />
 			</div>
-			
 		);
 	}
 }
-
-let mapStateToProps = (state) => {
-    return {
-        data: state.reply.data
-    };
-}
-
-/*let mapDispatchToProps = (dispatch) => {
-    return {
-        onCreate: (item) => dispatch(onCreate(item)),
-        onDelete: (item) => dispatch(onDelete(item)),
-        onUpdate: (item) => dispatch(onUpdate(item))
-    }
-}*/
-
-export default connect(mapStateToProps)(ReplyListComponent);

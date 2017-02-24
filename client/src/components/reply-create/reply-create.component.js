@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { onCreate } from '../../actions/reply/reply.action';
- 
+import styles from './reply-create.component.css';
 
-class ReplyCreateComponent extends React.Component {
+export default class ReplyCreateComponent extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -21,31 +20,25 @@ class ReplyCreateComponent extends React.Component {
 
   	handleSubmit(event) {
 	    event.preventDefault();
-	    {this.props.onCreate(this.state.value)}
+	    this.props.replyInsert({content: this.state.value,
+	    						_id: 6,
+	    						createdDate: "2017-02-22 13:35:34"});
 	}
 
 	render() {
+		const btn = "waves-effect waves-light btn " + styles.button;
+
 		return (
 			<div>
-				<br/><br/><h5>Create Reply at a below textarea</h5>
+				<br/><br/><h5>Add Reply</h5>
 				<form onSubmit={this.handleSubmit}>
 			        <label>
 			          content:
 			          <textarea value={this.state.value} onChange={this.handleChange} />
 			        </label>
-			        <input type="submit" value="Submit" />
+			        <input className={btn} type="submit" value="Submit" />
 		     	</form>
 			</div>
 		);
 	}
 }
-
-let mapDispatchToProps = (dispatch) => {
-    return {
-        onCreate: (item) => dispatch(onCreate(item))
-    }
-}
- 
-ReplyCreateComponent = connect(undefined, mapDispatchToProps)(ReplyCreateComponent);
- 
-export default ReplyCreateComponent;

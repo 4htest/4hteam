@@ -5,9 +5,7 @@ import styles from './detail.container.css';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { onCreate } from '../../actions/reply/reply.action';
-import { onDelete } from '../../actions/reply/reply.action';
-import { onUpdate } from '../../actions/reply/reply.action';
+import { replyDeleteRequest, replyInsertRequest, replyUpdateRequest } from '../../actions/reply/reply.action';
 
 class DetailContainer extends React.Component {
 	constructor(props) {
@@ -22,9 +20,9 @@ class DetailContainer extends React.Component {
 				<PostingComponent />
 				<ReplyListComponent 
 					data={this.props.reply.data}
-					onCreate={this.props.onCreate}
-					onDelete={this.props.onDelete}
-					onUpdate={this.props.onUpdate}
+					replyDelete={this.props.replyDelete}
+					replyUpdate={this.props.replyUpdate}
+					replyInsert={this.props.replyInsert} 
 					/>
 			</div>
 		);
@@ -33,21 +31,21 @@ class DetailContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        reply: state.reply
+        reply: state.reply.list
     };
 };
 
-/*let mapStateToProps = (state) => {
-    return {
-        data: state.reply.data
-    };
-}*/
-
 let mapDispatchToProps = (dispatch) => {
     return {
-        onCreate: (item) => dispatch(onCreate(item)),
-        onDelete: (item) => dispatch(onDelete(item)),
-        onUpdate: (item) => dispatch(onUpdate(item))
+        replyDelete: (index) => {
+            return dispatch(replyDeleteRequest(index));
+        },
+        replyUpdate: (data) => {
+            return dispatch(replyUpdateRequest(data));
+        },
+        replyInsert: (state) => {
+            return dispatch(replyInsertRequest(state));
+        }
     }
 }
 

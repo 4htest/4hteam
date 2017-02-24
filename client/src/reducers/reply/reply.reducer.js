@@ -6,13 +6,21 @@ const initialState = {
         status: 'INIT',
         error: -1
     },
+    delete: {
+        status: 'INIT',
+        error: -1
+    },
+    update: {
+        status: 'INIT',
+        error: -1
+    },
     list: {
         status: 'INIT',
         data: [
             {
                 "_id": "1",
                 "content": "blablabla111",
-                "createdDate": "2017-02-22 13:33:23"
+                "createdDate": "2017-02-21 13:33:23"
             },
             {
                 "_id": "2",
@@ -22,17 +30,17 @@ const initialState = {
             {
                 "_id": "3",
                 "content": "blablabla333",
-                "createdDate": "2017-02-22 13:33:25"
+                "createdDate": "2017-02-23 13:33:25"
             },
             {
                 "_id": "4",
                 "content": "blablabla444",
-                "createdDate": "2017-02-22 13:33:26"
+                "createdDate": "2017-02-24 13:33:26"
             },
             {
                 "_id": "5",
                 "content": "blablabla555",
-                "createdDate": "2017-02-22 13:33:27"
+                "createdDate": "2017-02-25 13:33:27"
             }
         ]
     }
@@ -44,7 +52,7 @@ export default function reply(state, action) {
     }
 
     switch(action.type) {
-    case types.reply_INSERT:
+    case types.REPLY_INSERT:
         return {
             ...state,
             insert: {
@@ -52,7 +60,7 @@ export default function reply(state, action) {
                 error: -1
             }
         };
-    case types.reply_INSERT_SUCCESS:
+    case types.REPLY_INSERT_SUCCESS:
         return {
             ...state,
             list: {
@@ -63,7 +71,7 @@ export default function reply(state, action) {
                 ]
             }
         };
-    case types.reply_INSERT_FAILURE:
+    case types.REPLY_INSERT_FAILURE:
         return {
             ...state,
             insert: {
@@ -71,7 +79,7 @@ export default function reply(state, action) {
                 error: action.error
             }
         };
-    case types.reply_LIST:
+    case types.REPLY_LIST:
         return {
             ...state,
             list: {
@@ -79,7 +87,7 @@ export default function reply(state, action) {
                 status: 'WAITING'
             }
         };
-    case types.reply_LIST_SUCCESS: 
+    case types.REPLY_LIST_SUCCESS: 
         return {
             ...state,
             list: {
@@ -90,12 +98,68 @@ export default function reply(state, action) {
                 ]
             }
         };
-    case types.reply_LIST_FAILURE:
+    case types.REPLY_LIST_FAILURE:
         return {
             ...state,
             list: {
                 ...state.list,
                 status: 'FAILURE'
+            }
+        };
+    case types.REPLY_DELETE:
+        return {
+            ...state,
+            delete: {
+                status: 'WAITING',
+                error: -1
+            }
+        };
+    case types.REPLY_DELETE_SUCCESS:
+        return {
+            ...state.list.data.splice(action.data, 1),
+            ...state,
+            list: {
+                status: 'SUCCESS',
+                data: [
+                    ...state.list.data
+                ]
+            }
+        }
+
+    case types.REPLY_DELETE_FAILURE:
+        return {
+            ...state,
+            update: {
+                status: 'FAILURE',
+                error: action.error
+            }
+        };
+    case types.REPLY_UPDATE:
+        return {
+            ...state,
+            update: {
+                status: 'WAITING',
+                error: -1
+            }
+        };
+    case types.REPLY_UPDATE_SUCCESS:
+        return {
+            ...state.list.data.splice(action.data.index, 1, action.data.item),
+            ...state,
+            list: {
+                status: 'SUCCESS',
+                data: [
+                    ...state.list.data
+                ]
+            }
+        }
+
+    case types.REPLY_UPDATE_FAILURE:
+        return {
+            ...state,
+            update: {
+                status: 'FAILURE',
+                error: action.error
             }
         };
     default:

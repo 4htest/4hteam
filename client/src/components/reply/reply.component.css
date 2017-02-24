@@ -17,20 +17,20 @@
     white-space: pre-wrap;
 }
  
-.icon-button {
+.iconButton {
     color: #9e9e9e;
     cursor: pointer;
 }
  
-.icon-button:hover {
+.iconButton:hover {
     color: #C5C5C5;
 }
  
-.icon-button:hover {
+.iconButton:hover {
     color: #C5C5C5;
 }
  
-.icon-button:active {
+.iconButton:active {
     color: #ff9800;
 }
  
@@ -39,27 +39,12 @@
     right: 20px;
     top: 20px;
 }
- 
-.reply .card-content {
-    font-size: 18px;
-}
- 
-.reply .footer {
-    border-top: 1px solid #ECECEC;
-    height: 45px;
-}
- 
-.star {
+
+.button {
     position: relative;
-    left: 15px;
-    top: 11px;
+    left: 85%;
 }
- 
-.star-count {
-    position: relative;
-    left: 20px;
-    top: 4px;
-    font-size: 13px;
-    font-weight: bold;
-    color: #777;
+
+.cardContent {
+    word-break:break-all;
 }

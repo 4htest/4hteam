@@ -1,25 +1,22 @@
-/*export const CREATE = 'CREATE';
-export const DELETE = 'DELETE';
-export const UPDATE = 'UPDATE';*/
 import * as types from '../actionTypes';
 import axios from 'axios';
 
 function replyInsert() {
     return {
-        type: types.reply_INSERT
+        type: types.REPLY_INSERT
     };
 }
 
 function replyInsertSuccess(data) {
     return {
-        type: types.reply_INSERT_SUCCESS,
+        type: types.REPLY_INSERT_SUCCESS,
         data
     };
 }
 
 function replyInsertFailure(error) {
     return {
-        type: types.reply_INSERT_FAILURE,
+        type: types.REPLY_INSERT_FAILURE,
         error
     };
 }
@@ -37,6 +34,76 @@ export function replyInsertRequest(state) {
             // });
         });
 }
+
+function replyDelete() {
+    return {
+        type: types.REPLY_DELETE
+    };
+}
+
+function replyDeleteSuccess(data) {
+    return {
+        type: types.REPLY_DELETE_SUCCESS,
+        data
+    };
+}
+
+function replyDeleteFailure(error) {
+    return {
+        type: types.REPLY_DELETE_FAILURE,
+        error
+    };
+}
+
+/* reply DELETE */
+export function replyDeleteRequest(index) {
+    return ((dispatch) => {
+            dispatch(replyDelete());
+            dispatch(replyDeleteSuccess(index));
+            // return axios.reply('/api/delete/reply', state)
+            // .then((response) => {
+            //     dispatch(replyDeleteSuccess());
+            // }).catch((error) => {
+            //     dispatch(replyDeleteFailure(error.response.data.code));
+            // });
+        });
+}
+
+
+function replyUpdate() {
+    return {
+        type: types.REPLY_UPDATE
+    };
+}
+
+function replyUpdateSuccess(data) {
+    return {
+        type: types.REPLY_UPDATE_SUCCESS,
+        data
+    };
+}
+
+function replyUpdateFailure(error) {
+    return {
+        type: types.REPLY_UPDATE_FAILURE,
+        error
+    };
+}
+
+/* reply DELETE */
+export function replyUpdateRequest(data) {
+    return ((dispatch) => {
+            dispatch(replyUpdate());
+            dispatch(replyUpdateSuccess(data));
+            // return axios.reply('/api/update/reply', state)
+            // .then((response) => {
+            //     dispatch(replyUpdateSuccess());
+            // }).catch((error) => {
+            //     dispatch(replyUpdateFailure(error.response.data.code));
+            // });
+        });
+}
+
 
 /*
     Parameter:
@@ -62,13 +129,13 @@ export function replyListRequest(isInitial, listType, id) {
 
 function replyList() {
     return {
-        type: types.reply_LIST
+        type: types.REPLY_LIST
     };
 }
 
 function replyListSuccess(data, isInitial, listType) {
     return {
-        type: types.reply_LIST_SUCCESS,
+        type: types.REPLY_LIST_SUCCESS,
         data,
         isInitial,
         listType
@@ -77,30 +144,8 @@ function replyListSuccess(data, isInitial, listType) {
 
 function replyListFailure(error) {
     return {
-        type: types.reply_LIST_FAILURE,
+        type: types.REPLY_LIST_FAILURE,
         error
     };
 }
  
-/*export function onCreate(item) {
-    return {
-        type: CREATE,
-        content: item
-    };
-}
- 
-export function onDelete(item) {
-    return {
-        type: DELETE,
-        index: item
-    };
-}
- 
-export function onUpdate(item) {
-    return {
-        type: UPDATE,
-        index: item.index,
-        content: item.content
-    };
-}
-*/
