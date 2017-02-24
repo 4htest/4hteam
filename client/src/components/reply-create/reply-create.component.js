@@ -21,8 +21,9 @@ export default class ReplyCreateComponent extends React.Component {
   	handleSubmit(event) {
 	    event.preventDefault();
 	    this.props.replyInsert({content: this.state.value,
-	    						_id: 6,
-	    						createdDate: "2017-02-22 13:35:34"});
+	    						comment_no: 6,
+	    						createdDate: "2017-02-22 13:35:34",
+	    						post_no: 1 });
 	}
 
 	render() {

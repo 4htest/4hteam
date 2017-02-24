@@ -17,6 +17,7 @@ export default class ReplyListComponent extends React.Component {
 						   data={this.props.data}
 						   replyDelete={this.props.replyDelete}
 						   replyUpdate={this.props.replyUpdate} />
+				
 				);
 			});
 		};

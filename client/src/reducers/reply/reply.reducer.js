@@ -17,7 +17,7 @@ const initialState = {
     list: {
         status: 'INIT',
         data: [
-            {
+            /*{
                 "_id": "1",
                 "content": "blablabla111",
                 "createdDate": "2017-02-21 13:33:23"
@@ -41,7 +41,7 @@ const initialState = {
                 "_id": "5",
                 "content": "blablabla555",
                 "createdDate": "2017-02-25 13:33:27"
-            }
+            }*/
         ]
     }
 };
@@ -87,15 +87,12 @@ export default function reply(state, action) {
                 status: 'WAITING'
             }
         };
-    case types.REPLY_LIST_SUCCESS: 
+    case types.REPLY_LIST_SUCCESS:
         return {
             ...state,
             list: {
                 status: 'SUCCESS',
-                data: [
-                    ...state.list.data,
-                    action.data
-                ]
+                data: action.data.list
             }
         };
     case types.REPLY_LIST_FAILURE:

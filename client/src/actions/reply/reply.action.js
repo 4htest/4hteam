@@ -56,13 +56,13 @@ function replyDeleteFailure(error) {
 }
 
 /* reply DELETE */
-export function replyDeleteRequest(index) {
+export function replyDeleteRequest(state) {
     return ((dispatch) => {
             dispatch(replyDelete());
-            dispatch(replyDeleteSuccess(index));
-            // return axios.reply('/api/delete/reply', state)
+            dispatch(replyDeleteSuccess(state));
+            // return axios.reply('/api/delete/comment', state)
             // .then((response) => {
-            //     dispatch(replyDeleteSuccess());
+            //     dispatch(replyDeleteSuccess(index));
             // }).catch((error) => {
             //     dispatch(replyDeleteFailure(error.response.data.code));
             // });
@@ -90,14 +90,14 @@ function replyUpdateFailure(error) {
     };
 }
 
-/* reply DELETE */
-export function replyUpdateRequest(data) {
+/* reply UPDATE */
+export function replyUpdateRequest(state) {
     return ((dispatch) => {
             dispatch(replyUpdate());
-            dispatch(replyUpdateSuccess(data));
-            // return axios.reply('/api/update/reply', state)
+            dispatch(replyUpdateSuccess(state));
+            // return axios.reply('/api/update/comment', state)
             // .then((response) => {
-            //     dispatch(replyUpdateSuccess());
+            //     dispatch(replyUpdateSuccess(data));
             // }).catch((error) => {
             //     dispatch(replyUpdateFailure(error.response.data.code));
             // });
@@ -114,9 +114,8 @@ export function replyUpdateRequest(data) {
 export function replyListRequest(isInitial, listType, id) {
     return (dispatch) => {
         dispatch(replyList());
-        let url = '/api/get/reply';
-        
-        url = isInitial ? url : url + '/' + listType + '/' + id;
+        let url = '/api/get/comments?id=' + 1;
+        //url = isInitial ? url : url + '/' + listType + '/' + id;
         
         return axios.get(url)
         .then((response) => {

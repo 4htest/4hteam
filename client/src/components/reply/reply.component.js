@@ -11,9 +11,10 @@ export default class ReplyComponent extends React.Component {
 			updatedData: {
 				index: 1, 
 				item: {
-					_id: 1,
+					comment_no: 1,
 					content: '',
-					createdDate: ''
+					createdDate: '',
+					post_no: 1
 				} 
 			}
 		};
@@ -49,9 +50,10 @@ export default class ReplyComponent extends React.Component {
 		})*/
   	
 		this.state.updatedData.index = this.props.data.indexOf(item);
-		this.state.updatedData.item._id = item._id;
+		this.state.updatedData.item.comment_no = item.comment_no;
 		this.state.updatedData.item.content = this.state.value;
 		this.state.updatedData.item.createdDate = item.createdDate;
+		this.state.updatedData.item.post_no = item.post_no;
 		this.props.replyUpdate(this.state.updatedData);
 		this.toggleClick();
   	}
@@ -67,14 +69,14 @@ export default class ReplyComponent extends React.Component {
                 <div className={styles.info}>
                     <a className={styles.username}>Anonymous</a> {this.props.i.createdDate}
                     <div className={styles.optionbutton}>
-                        <a className='dropdown-button' id={`dropdown-button-${this.props.i._id}`} data-activates={`dropdown-${this.props.i._id}`}>
-                            <i className={dropdownBtn}>more_vert</i>
-                        </a>
-                        <ul id={`dropdown-${this.props.i._id}`} className='dropdown-content'>
-                            <li><a onClick={this.toggleClick}>Edit</a></li>
-                            <li><a onClick={this.delete.bind(this, this.props.i)}>Remove</a></li>
-                        </ul>
-                    </div>
+		                <a className='dropdown-button' id={`dropdown-button-${this.props.i.comment_no}`} data-activates={`dropdown-${this.props.i.comment_no}`}>
+		                    <i className={dropdownBtn}>more_vert</i>
+		                </a>
+		                <ul id={`dropdown-${this.props.i.comment_no}`} className='dropdown-content'>
+		                    <li><a onClick={this.toggleClick}>Edit</a></li>
+		                    <li><a onClick={this.delete.bind(this, this.props.i)}>Remove</a></li>
+		                </ul>
+		            </div>
                 </div>
                 <div className={cardContent}>
                     {this.props.i.content}
@@ -85,8 +87,10 @@ export default class ReplyComponent extends React.Component {
 		const editView = (
 			<div className="card">
 				<div className={cardContent}>
-					<textarea value={this.state.value} onChange={this.handleChange} />
-					<button className={btn} type="button" onClick={this.update.bind(this, this.props.i)}>확인</button>
+					<textarea className="materialize-textarea" value={this.state.value} onChange={this.handleChange} />
+					<div className={styles.cardAction}>
+                        <a onClick={this.update.bind(this, this.props.i)}>확인</a>
+                    </div>
 				</div>
 			</div>
 		);
@@ -97,4 +101,20 @@ export default class ReplyComponent extends React.Component {
 	        </div>
 		);
 	}
+
+	componentDidUpdate() {
+        // WHEN COMPONENT UPDATES, INITIALIZE DROPDOWN
+        // (TRIGGERED WHEN LOGGED IN)
+        $('#dropdown-button-'+this.props.i.comment_no).dropdown({
+            belowOrigin: true // Displays dropdown below the button
+        });
+    }
+ 
+    componentDidMount() {
+        // WHEN COMPONENT MOUNTS, INITIALIZE DROPDOWN
+        // (TRIGGERED WHEN REFRESHED)
+        $('#dropdown-button-'+this.props.i.comment_no).dropdown({
+            belowOrigin: true // Displays dropdown below the button
+        });
+    }
 }

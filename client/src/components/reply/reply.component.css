@@ -47,4 +47,10 @@
 
 .cardContent {
     word-break:break-all;
+    white-space:pre;
+}
+ 
+.cardAction {
+    text-align: right;
+    cursor : pointer;
 }
