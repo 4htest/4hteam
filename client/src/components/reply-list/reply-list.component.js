@@ -16,15 +16,16 @@ export default class ReplyListComponent extends React.Component {
 					<Reply i={i}
 						   data={this.props.data}
 						   replyDelete={this.props.replyDelete}
-						   replyUpdate={this.props.replyUpdate} />
-				
+					       replyUpdate={this.props.replyUpdate} />
 				);
 			});
 		};
 
 		return (
-			<div>
-				{item(this.props.data)}
+			<div className={styles.replyArea}>
+				<ul>
+					{item(this.props.data)}
+				</ul>
 				<ReplyCreate replyInsert={this.props.replyInsert} />
 			</div>
 		);

@@ -30,11 +30,11 @@ export default class ReplyCreateComponent extends React.Component {
 		const btn = "waves-effect waves-light btn " + styles.button;
 
 		return (
-			<div>
-				<br/><br/><h5>Add Reply</h5>
-				<form onSubmit={this.handleSubmit}>
-			        <label>
-			          content:
+			<div className={styles.createReplyDiv}>
+				<br />
+				<form className={styles.createForm} onSubmit={this.handleSubmit}>
+			        <label className={styles.createLabel}>
+			          comment:
 			          <textarea value={this.state.value} onChange={this.handleChange} />
 			        </label>
 			        <input className={btn} type="submit" value="Submit" />

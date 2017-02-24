@@ -62,12 +62,13 @@ export default class ReplyComponent extends React.Component {
 	render() {
 		const btn = "waves-effect waves-light btn " + styles.button;
 		const dropdownBtn = "material-icons icon-button " + styles.iconButton;
-		const cardContent = "card-content " + styles.cardContent; 
+		const rContent = "card-content " + styles.rContent; 
+		const rAction = "card-action " + styles.rAction;
 
 		const replyView = (
-			<div className="card">
+			<div className={styles.rbody}>
                 <div className={styles.info}>
-                    <a className={styles.username}>Anonymous</a> {this.props.i.createdDate}
+                    <a className={styles.username}>Anonymous</a><span className={styles.date}>{this.props.i.createdDate}</span>
                     <div className={styles.optionbutton}>
 		                <a className='dropdown-button' id={`dropdown-button-${this.props.i.comment_no}`} data-activates={`dropdown-${this.props.i.comment_no}`}>
 		                    <i className={dropdownBtn}>more_vert</i>
@@ -78,17 +79,19 @@ export default class ReplyComponent extends React.Component {
 		                </ul>
 		            </div>
                 </div>
-                <div className={cardContent}>
+                <div className={rContent}>
                     {this.props.i.content}
                 </div>
+                <hr className={styles.horizontal} />
             </div>
+            
 		);
 
 		const editView = (
-			<div className="card">
-				<div className={cardContent}>
-					<textarea className="materialize-textarea" value={this.state.value} onChange={this.handleChange} />
-					<div className={styles.cardAction}>
+			<div className={styles.rbody}>
+				<div className={rContent}>
+					<textarea className="materialize-textarea" placeholder="Write down your comment" value={this.state.value} onChange={this.handleChange} />
+					<div className={rAction}>
                         <a onClick={this.update.bind(this, this.props.i)}>확인</a>
                     </div>
 				</div>
@@ -96,9 +99,11 @@ export default class ReplyComponent extends React.Component {
 		);
 
 		return (
-			<div className={styles.reply}>
-	            { this.state.clicked ? editView : replyView }
-	        </div>
+			<li>
+				<div className={styles.reply}>
+	            	{ this.state.clicked ? editView : replyView }
+	        	</div>
+	        </li>
 		);
 	}
 

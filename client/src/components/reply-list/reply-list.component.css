@@ -3,3 +3,10 @@
 	width: 100%;
 	min-height: 25%;
 }
+
+.replyArea {
+	background-color: #FAFAFA;
+	padding: 20px;
+	margin: 20px;
+}
+
