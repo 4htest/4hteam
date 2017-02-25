@@ -6,18 +6,12 @@ export default class SideBarUpdateComponent extends React.Component {
         super(props);
         this.state = { 
             isUpdate: false,
-            selectedData: ''
+            selectedData: '',
         };
-        this.onSelection = this.onSelection.bind(this);
         this.handleChange= this.handleChange.bind(this);   
         this.handleClick = this.handleClick.bind(this); 
         // this.handleKey = this.handleKey.bind(this);  
     }
-
-    onSelection(selection) {
-        this.setState({ selected: selection.title });
-        //or trigger a dispatch here 
-    }	  
 
     handleChange(e) {
         this.setState({

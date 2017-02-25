@@ -8,5 +8,7 @@ import ReplyComponent from './reply/reply.component';
 import ReplyListComponent from './reply-list/reply-list.component';
 import CategoryListComponent from './category-list/category-list.component';
 import CategoryComponent from './category/category.component';
+import ContextComponent from './context/context.component';
+import ContextCreateComponent from './context/context-create.component';
 
-export { HeaderComponent, SideBarComponent, SideBarCreateComponent, SideBarDeleteComponent, SideBarUpdateComponent, PostingComponent, ReplyComponent, ReplyListComponent, CategoryListComponent, CategoryComponent};
+export { HeaderComponent, SideBarComponent, SideBarCreateComponent, SideBarDeleteComponent, SideBarUpdateComponent, PostingComponent, ReplyComponent, ReplyListComponent, CategoryListComponent, CategoryComponent, ContextComponent, ContextCreateComponent};

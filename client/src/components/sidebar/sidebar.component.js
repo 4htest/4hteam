@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './sidebar.component.css';
 import update from 'react-addons-update';
-import { SideNav, Nav } from 'react-sidenav';
 import { Link } from 'react-router'
 import CategoryListComponent from '../category-list/category-list.component';
 import SideBarCreateComponent from './sidebar-create.component.js';
@@ -19,7 +18,6 @@ export default class SideBarComponent extends React.Component {
             isUpdate: false
         };
         this.handleData= this.handleData.bind(this);
-        this.onSelection= this.onSelection.bind(this);
         this.handleCreate= this.handleCreate.bind(this);
         this.handleDelete= this.handleDelete.bind(this);
         this.handleUpdate= this.handleUpdate.bind(this);
@@ -27,11 +25,6 @@ export default class SideBarComponent extends React.Component {
         this.handleEdit= this.handleEdit.bind(this);
 
     }
-
-    onSelection(selection) {
-        this.setState({ selected: selection.title });
-        //or trigger a dispatch here 
-    }	
 
     handleKey(key) {
         this.setState({
@@ -93,8 +86,6 @@ export default class SideBarComponent extends React.Component {
             )      
         });  
     }
-
-
 
     render(){        
 

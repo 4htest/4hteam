@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router'
+import { connect } from 'react-redux';
 
 export default class Category extends React.Component {
 	constructor(props) {
@@ -24,7 +26,7 @@ export default class Category extends React.Component {
 		return (
 			<div>
 				<div onClick={() => this.handleClick(this.props.title, this.props.index)}>
-					{this.props.title}
+					<li><Link to={this.props.title}>{this.props.title}</Link></li>
 				</div>
 			</div>
 		);

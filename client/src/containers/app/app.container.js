@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './app.container.css';
 
-import { HeaderComponent, SideBarComponent } from '../../components';
+import { HeaderComponent, SideBarComponent, ContextComponent } from '../../components';
 import DetailContainer from '../detail/detail.container';
 
 import { connect } from 'react-redux';
@@ -22,6 +22,7 @@ class AppContainer extends React.Component {
                         {this.props.children}
                     </div>
                 </div>
+                <ContextComponent />
             </div>
         );
     }

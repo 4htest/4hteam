@@ -5,6 +5,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
  
 // Container Components
 import { AppContainer, MainContainer, DetailContainer } from './containers';
+import { ContextComponent } from './components';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -21,6 +22,7 @@ ReactDOM.render(
 		    	<IndexRoute component={MainContainer} />
 		    	<Route path='main' component={MainContainer} />
 		    	<Route path='detail' component={DetailContainer} />
+		    	<Route path='category' component={ContextComponent} />
 		    </Route>
 		</Router>
 	</Provider>, rootElement
