@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 
 export default class Category extends React.Component {
 	constructor(props) {
@@ -7,7 +8,11 @@ export default class Category extends React.Component {
 
 	render() {
 		return (
-			<div>{this.props.title}</div>
+			<div>
+				<li>
+					<Link to={this.props.title}>{this.props.title}</Link>
+				</li>
+			</div>
 		);
 	}
 }

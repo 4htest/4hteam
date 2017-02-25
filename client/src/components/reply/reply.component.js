@@ -38,36 +38,33 @@ export default class ReplyComponent extends React.Component {
   	}
 
   	update(item) {
-  		/*this.setState({
+  		this.setState({
 			updatedData: {
 				index: this.props.data.indexOf(item),
 				item: {
-					_id: item._id,
+					comment_no: item.comment_no,
 					content: this.state.value,
-					createdDate: item.createdDate
+					createdDate: item.createdDate,
+					post_no: item.post_no
 				} 
 			}
-		})*/
-  	
-		this.state.updatedData.index = this.props.data.indexOf(item);
-		this.state.updatedData.item.comment_no = item.comment_no;
-		this.state.updatedData.item.content = this.state.value;
-		this.state.updatedData.item.createdDate = item.createdDate;
-		this.state.updatedData.item.post_no = item.post_no;
-		this.props.replyUpdate(this.state.updatedData);
-		this.toggleClick();
+		},() => {
+			this.props.replyUpdate(this.state.updatedData);
+			this.toggleClick();
+		});
   	}
 
 
 	render() {
 		const btn = "waves-effect waves-light btn " + styles.button;
 		const dropdownBtn = "material-icons icon-button " + styles.iconButton;
-		const cardContent = "card-content " + styles.cardContent; 
+		const rContent = "card-content " + styles.rContent; 
+		const rAction = "card-action " + styles.rAction;
 
 		const replyView = (
-			<div className="card">
+			<div className={styles.rbody}>
                 <div className={styles.info}>
-                    <a className={styles.username}>Anonymous</a> {this.props.i.createdDate}
+                    <a className={styles.username}>Anonymous</a><span className={styles.date}>{this.props.i.createdDate}</span>
                     <div className={styles.optionbutton}>
 		                <a className='dropdown-button' id={`dropdown-button-${this.props.i.comment_no}`} data-activates={`dropdown-${this.props.i.comment_no}`}>
 		                    <i className={dropdownBtn}>more_vert</i>
@@ -78,17 +75,19 @@ export default class ReplyComponent extends React.Component {
 		                </ul>
 		            </div>
                 </div>
-                <div className={cardContent}>
+                <div className={rContent}>
                     {this.props.i.content}
                 </div>
+                <hr className={styles.horizontal} />
             </div>
+            
 		);
 
 		const editView = (
-			<div className="card">
-				<div className={cardContent}>
+			<div className={styles.rbody}>
+				<div className={rContent}>
 					<textarea className="materialize-textarea" value={this.state.value} onChange={this.handleChange} />
-					<div className={styles.cardAction}>
+					<div className={rAction}>
                         <a onClick={this.update.bind(this, this.props.i)}>확인</a>
                     </div>
 				</div>
@@ -96,9 +95,11 @@ export default class ReplyComponent extends React.Component {
 		);
 
 		return (
-			<div className={styles.reply}>
-	            { this.state.clicked ? editView : replyView }
-	        </div>
+			<li>
+				<div className={styles.reply}>
+	            	{ this.state.clicked ? editView : replyView }
+	        	</div>
+	        </li>
 		);
 	}
 

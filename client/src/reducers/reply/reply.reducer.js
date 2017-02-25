@@ -17,31 +17,36 @@ const initialState = {
     list: {
         status: 'INIT',
         data: [
-            /*{
-                "_id": "1",
+            {
+                "comment_no": "1",
                 "content": "blablabla111",
-                "createdDate": "2017-02-21 13:33:23"
+                "createdDate": "2017-02-21 13:33:23",
+                "post_no": "1"
             },
             {
-                "_id": "2",
+                "comment_no": "2",
                 "content": "blablabla222",
-                "createdDate": "2017-02-22 13:33:24"
+                "createdDate": "2017-02-22 13:33:24",
+                "post_no": "1"
             },
             {
-                "_id": "3",
+                "comment_no": "3",
                 "content": "blablabla333",
-                "createdDate": "2017-02-23 13:33:25"
+                "createdDate": "2017-02-23 13:33:25",
+                "post_no": "1"
             },
             {
-                "_id": "4",
+                "comment_no": "4",
                 "content": "blablabla444",
-                "createdDate": "2017-02-24 13:33:26"
+                "createdDate": "2017-02-24 13:33:26",
+                "post_no": "1"
             },
             {
-                "_id": "5",
+                "comment_no": "5",
                 "content": "blablabla555",
-                "createdDate": "2017-02-25 13:33:27"
-            }*/
+                "createdDate": "2017-02-25 13:33:27",
+                "post_no": "1"
+            }
         ]
     }
 };
@@ -92,7 +97,10 @@ export default function reply(state, action) {
             ...state,
             list: {
                 status: 'SUCCESS',
-                data: action.data.list
+                //data: action.data.list
+                data: [
+                    ...state.list.data
+                ]
             }
         };
     case types.REPLY_LIST_FAILURE:
@@ -113,13 +121,11 @@ export default function reply(state, action) {
         };
     case types.REPLY_DELETE_SUCCESS:
         return {
-            ...state.list.data.splice(action.data, 1),
             ...state,
             list: {
+                ...state.list,
                 status: 'SUCCESS',
-                data: [
-                    ...state.list.data
-                ]
+                ...state.list.data.splice(action.data, 1)
             }
         }
 
@@ -141,13 +147,11 @@ export default function reply(state, action) {
         };
     case types.REPLY_UPDATE_SUCCESS:
         return {
-            ...state.list.data.splice(action.data.index, 1, action.data.item),
             ...state,
             list: {
+                ...state.list,
                 status: 'SUCCESS',
-                data: [
-                    ...state.list.data
-                ]
+                ...state.list.data.splice(action.data.index, 1, action.data.item)
             }
         }
 
