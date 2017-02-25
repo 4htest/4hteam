@@ -33,10 +33,12 @@ export default class ReplyCreateComponent extends React.Component {
 			<div className={styles.createReplyDiv}>
 				<br />
 				<form className={styles.createForm} onSubmit={this.handleSubmit}>
-			        <label className={styles.createLabel}>
-			          comment:
-			          <textarea value={this.state.value} onChange={this.handleChange} />
-			        </label>
+					<div className={styles.createText}>
+				        <label>
+				          comment:
+				          <textarea value={this.state.value} onChange={this.handleChange} />
+				        </label>
+			        </div>
 			        <input className={btn} type="submit" value="Submit" />
 		     	</form>
 			</div>

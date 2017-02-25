@@ -1,6 +1,6 @@
 .button {
-    position: absolute;
-    top: 80px;
+    position: relative;
+    top: 25px;
     right: 0;
 }
 
@@ -13,6 +13,8 @@
 	position: relative;
 }
 
-.createLabel {
+.createText {
 	position: relative;
+    width: 65%;
+    float: left;
 }

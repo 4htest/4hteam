@@ -111,7 +111,7 @@ export function replyUpdateRequest(state) {
         - listType:  OPTIONAL; loading 'old' reply or 'new' reply
         - id:        OPTIONAL; reply id (one at the bottom or one at the top)
 */
-export function replyListRequest(isInitial, listType, id) {
+export function replyListRequest(isInitial?, listType, id) {
     return (dispatch) => {
         dispatch(replyList());
         let url = '/api/get/comments?id=' + 1;

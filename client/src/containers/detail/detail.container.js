@@ -10,7 +10,7 @@ import { replyDeleteRequest, replyInsertRequest, replyUpdateRequest, replyListRe
 class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		this.props.replyList();
+		//this.props.replyList();
 	}
 
 	
