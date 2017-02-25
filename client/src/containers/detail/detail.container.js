@@ -10,10 +10,12 @@ import { replyDeleteRequest, replyInsertRequest, replyUpdateRequest, replyListRe
 class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
-		//this.props.replyList();
 	}
 
-	
+	componentDidUpdate() {
+		console.log(this.props.params.categoryName)
+		this.props.replyList(this.props.params.categoryName)
+	}
 
 	render() {
 		return (
@@ -25,7 +27,7 @@ class DetailContainer extends React.Component {
 					replyDelete={this.props.replyDelete}
 					replyUpdate={this.props.replyUpdate}
 					replyInsert={this.props.replyInsert} 
-					/>
+				/>
 			</div>
 		);
 	}
