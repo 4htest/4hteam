@@ -13,8 +13,8 @@ class DetailContainer extends React.Component {
 	}
 
 	componentDidUpdate() {
-		console.log(this.props.params.categoryName)
-		this.props.replyList(this.props.params.categoryName)
+		// console.log(this.props.params.categoryName)
+		// this.props.replyList(this.props.params.categoryName)
 	}
 
 	render() {
