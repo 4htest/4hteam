@@ -6,7 +6,10 @@
 
 .replyArea {
 	background-color: #FAFAFA;
+	max-width: 800px;
+
 	padding: 20px;
-	margin: 20px 150px 20px 150px;
+	margin: 20px auto;
+	min-width: 600px;
 }
 

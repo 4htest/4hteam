@@ -2,6 +2,8 @@
     position: relative;
     top: 25px;
     right: 0;
+    margin-left: 20px;
+    float: right;
 }
 
 .createReplyDiv {
@@ -11,10 +13,12 @@
 
 .createForm {
 	position: relative;
+	height: 200px;
 }
 
 .createText {
 	position: relative;
-    width: 65%;
+    width: 80%;
+    min-width: 400px;
     float: left;
 }

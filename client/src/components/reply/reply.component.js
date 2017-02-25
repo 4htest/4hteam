@@ -38,24 +38,20 @@ export default class ReplyComponent extends React.Component {
   	}
 
   	update(item) {
-  		/*this.setState({
+  		this.setState({
 			updatedData: {
 				index: this.props.data.indexOf(item),
 				item: {
-					_id: item._id,
+					comment_no: item.comment_no,
 					content: this.state.value,
-					createdDate: item.createdDate
+					createdDate: item.createdDate,
+					post_no: item.post_no
 				} 
 			}
-		})*/
-  	
-		this.state.updatedData.index = this.props.data.indexOf(item);
-		this.state.updatedData.item.comment_no = item.comment_no;
-		this.state.updatedData.item.content = this.state.value;
-		this.state.updatedData.item.createdDate = item.createdDate;
-		this.state.updatedData.item.post_no = item.post_no;
-		this.props.replyUpdate(this.state.updatedData);
-		this.toggleClick();
+		},() => {
+			this.props.replyUpdate(this.state.updatedData);
+			this.toggleClick();
+		});
   	}
 
 
@@ -90,7 +86,7 @@ export default class ReplyComponent extends React.Component {
 		const editView = (
 			<div className={styles.rbody}>
 				<div className={rContent}>
-					<textarea className="materialize-textarea" placeholder="Write down your comment" value={this.state.value} onChange={this.handleChange} />
+					<textarea className="materialize-textarea" value={this.state.value} onChange={this.handleChange} />
 					<div className={rAction}>
                         <a onClick={this.update.bind(this, this.props.i)}>확인</a>
                     </div>

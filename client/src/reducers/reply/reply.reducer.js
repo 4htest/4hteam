@@ -121,13 +121,11 @@ export default function reply(state, action) {
         };
     case types.REPLY_DELETE_SUCCESS:
         return {
-            ...state.list.data.splice(action.data, 1),
             ...state,
             list: {
+                ...state.list,
                 status: 'SUCCESS',
-                data: [
-                    ...state.list.data
-                ]
+                ...state.list.data.splice(action.data, 1)
             }
         }
 
@@ -149,13 +147,11 @@ export default function reply(state, action) {
         };
     case types.REPLY_UPDATE_SUCCESS:
         return {
-            ...state.list.data.splice(action.data.index, 1, action.data.item),
             ...state,
             list: {
+                ...state.list,
                 status: 'SUCCESS',
-                data: [
-                    ...state.list.data
-                ]
+                ...state.list.data.splice(action.data.index, 1, action.data.item)
             }
         }
 

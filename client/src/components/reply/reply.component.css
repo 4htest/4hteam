@@ -43,8 +43,6 @@
 }
 
 .reply .rContent {
-    /* word-break:break-all;
-    white-space:pre; */
     word-wrap: break-word;
     white-space: pre-wrap;
 }
