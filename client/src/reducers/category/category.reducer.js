@@ -9,11 +9,11 @@ const initialState = {
     list: {
         status: 'INIT',
         data: [
-            {title: 'category 1'},
-            {title: 'category 2'},
-            {title: 'category 3'},
-            {title: 'category 4'},
-            {title: 'category 5'}
+            {title: 'category1'},
+            {title: 'category2'},
+            {title: 'category3'},
+            {title: 'category4'},
+            {title: 'category5'}
         ]
     }
 };

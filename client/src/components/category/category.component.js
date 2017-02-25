@@ -7,10 +7,11 @@ export default class Category extends React.Component {
 	}
 
 	render() {
+		const url = `/detail/${this.props.title}`;
 		return (
 			<div>
 				<li>
-					<Link to={this.props.title}>{this.props.title}</Link>
+					<Link to={url}>{this.props.title}</Link>
 				</li>
 			</div>
 		);
