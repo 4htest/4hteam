@@ -12,4 +12,8 @@ export default class DetailContainer extends React.Component {
 			</div>
 		);
 	}
+
+
 }
+
+
