@@ -22,12 +22,12 @@ public class CommentController {
   CommentService commentService;
   
   @RequestMapping(value = "/api/get/comments", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String getCommentlist() {
+  public @ResponseBody String getCommentlist(int id) {
 
     List<Comment> commentList;
     HashMap<String,Object> result;
     try {
-      commentList = commentService.getCommentlist();
+      commentList = commentService.getCommentlist(id);
       
       result = new HashMap<>();
       result.put("list", commentList);

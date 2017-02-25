@@ -2,7 +2,11 @@ import React from 'react';
 import styles from './app.container.css';
 
 import { HeaderComponent, SideBarComponent } from '../../components';
+import { categoryInsertRequest } from '../../actions/category/category.action';
 import DetailContainer from '../detail/detail.container';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 class AppContainer extends React.Component {
     constructor(props) {
@@ -12,7 +16,10 @@ class AppContainer extends React.Component {
     render(){
         return (
             <div>
-                <SideBarComponent />
+                <SideBarComponent 
+                    data={this.props.category.data}
+                    categoryInsert={this.props.categoryInsert}
+                />
                 <div className={styles.appFrame}>
                     <HeaderComponent />
                     <div className={styles.appChild}>
@@ -24,4 +31,18 @@ class AppContainer extends React.Component {
     }
 }
 
-export default AppContainer;
+const mapStateToProps = (state) => {
+    return {
+        category: state.category.list
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        categoryInsert: (state) => {
+            return dispatch(categoryInsertRequest(state));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
