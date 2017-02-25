@@ -7,7 +7,7 @@ export default class Category extends React.Component {
 	}
 
 	render() {
-		const url = `/detail/${this.props.title}`;
+		const url = `/${this.props.title}`;
 		return (
 			<div>
 				<li>

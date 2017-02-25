@@ -23,7 +23,8 @@ ReactDOM.render(
 		    <Route path='/' component={AppContainer}>
 		    	<IndexRoute component={MainContainer} />
 		    	<Route path='main' component={MainContainer} />
-		    	<Route path='detail/:categoryname' component={DetailContainer} />
+		    	<Route path='/:categoryName' component={DetailContainer} />
+		    	<Route path='/:categoryName/:id' component={DetailContainer} />
 		    </Route>
 		</Router>
 	</Provider>, rootElement

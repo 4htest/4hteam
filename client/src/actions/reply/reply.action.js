@@ -118,11 +118,11 @@ export function replyListRequest(isInitial?, listType, id) {
         //url = isInitial ? url : url + '/' + listType + '/' + id;
         
         return axios.get(url)
-        .then((response) => {
-            dispatch(replyListSuccess(response.data, isInitial, listType));
-        }).catch((error) => {
-            dispatch(replyListFailure(error.response.data.code));
-        });
+                .then((response) => {
+                    dispatch(replyListSuccess(response.data, isInitial, listType));
+                }).catch((error) => {
+                    dispatch(replyListFailure(error.response.data.code));
+                });
     };
 }
 
