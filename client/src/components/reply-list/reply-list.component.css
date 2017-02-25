@@ -3,3 +3,13 @@
 	width: 100%;
 	min-height: 25%;
 }
+
+.replyArea {
+	background-color: #FAFAFA;
+	max-width: 800px;
+
+	padding: 20px;
+	margin: 20px auto;
+	min-width: 600px;
+}
+
