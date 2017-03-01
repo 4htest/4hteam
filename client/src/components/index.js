@@ -7,7 +7,9 @@ import ReplyListComponent from './reply-list/reply-list.component';
 import CategoryListComponent from './category-list/category-list.component';
 import CategoryComponent from './category/category.component';
 import CategoryCreateComponent from './category-create/category-create.component';
+import PostViewComponent from './post-view/post-view.component';
+import PosteCreateComponent from './post-create/post-create.component';
 
 export { HeaderComponent, SideBarComponent, PostingComponent, 
 	ReplyComponent, ReplyListComponent, ReplyCreateComponent, CategoryListComponent, CategoryComponent,
-	CategoryCreateComponent };
+	CategoryCreateComponent,PostViewComponent, PosteCreateComponent };

@@ -2,13 +2,44 @@ import * as types from '../../actions/actionTypes';
 import update from 'react-addons-update';
 
 const initialState = {
-    post: {
+    insert: {
         status: 'INIT',
         error: -1
     },
     list: {
         status: 'INIT',
-        data: [],
+        data: [
+            {
+                "post_no": "1",
+                "content": "post1",
+                "createdDate": "2017-02-24 13:33:26",
+            },
+                        {
+                "post_no": "2",
+                "content": "post2",
+                "createdDate": "2017-02-24 13:33:27",
+            },
+                        {
+                "post_no": "3",
+                "content": "post3",
+                "createdDate": "2017-02-24 13:33:28",
+            },
+                        {
+                "post_no": "4",
+                "content": "post4",
+                "createdDate": "2017-02-24 13:33:29",
+            },
+                        {
+                "post_no": "5",
+                "content": "post5",
+                "createdDate": "2017-02-24 13:33:30",
+            },
+            {
+                "post_no": "6",
+                "content": "post6",
+                "createdDate": "2017-02-25 13:33:31",
+            }
+        ],
         isLast: false
     }
 };
@@ -27,11 +58,16 @@ export default function post(state, action) {
             }
         });
     case types.POST_INSERT_SUCCESS:
-        return update(state, {
-            insert: {
-                status: { $set: 'SUCCESS' }
+        return {
+            ...state,
+            list: {
+                status: 'SUCCESS',
+                data: [
+                    ...state.list.data,
+                    action.data
+                ]
             }
-        });
+        };
     case types.POST_INSERT_FAILURE:
         return update(state, {
             insert: {

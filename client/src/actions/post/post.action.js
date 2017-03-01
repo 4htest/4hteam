@@ -7,9 +7,10 @@ function postInsert() {
     };
 }
 
-function postInsertSuccess() {
+function postInsertSuccess(data) {
     return {
-        type: types.POST_INSERT_SUCCESS
+        type: types.POST_INSERT_SUCCESS,
+        data
     };
 }
 
@@ -21,15 +22,16 @@ function postInsertFailure(error) {
 }
 
 /* POST INSERT */
-export function postInsetRequest(state) {
+export function postInsertRequest(state) {
     return (dispatch) => {
         dispatch(postInsert());
-        return axios.post('/api/insert/post', state)
-        .then((response) => {
-            dispatch(postInsertSuccess());
-        }).catch((error) => {
-            dispatch(postInsertFailure(error.response.data.code));
-        });
+        dispatch(postInsertSuccess(state));
+        // return axios.post('/api/insert/post', state)
+        // .then((response) => {
+        //     dispatch(postInsertSuccess());
+        // }).catch((error) => {
+        //     dispatch(postInsertFailure(error.response.data.code));
+        // });
     };
 }
 

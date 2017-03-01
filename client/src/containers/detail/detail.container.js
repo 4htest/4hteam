@@ -18,6 +18,7 @@ class DetailContainer extends React.Component {
 	}
 
 	render() {
+		console.log(this.state)
 		return (
 			<div className={styles.detail}>
 				<h2>detail container</h2>
