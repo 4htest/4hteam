@@ -24,9 +24,9 @@
         where comment_no=#{no} 
   </delete>
  
- 	<insert id="insertComment"  parameterType="Comment">
+ 	<insert id="insertComment"  parameterType="Comment" useGeneratedKeys="true" keyProperty="comment_no">
         INSERT INTO comments (post_no, content, createdDate)
-        values (#{post_no}, #{content}, now()); 
+        values (#{post_no}, #{content}, #{createdDate}); 
   </insert>
   
   <update id="modifyComment"  parameterType="Comment">

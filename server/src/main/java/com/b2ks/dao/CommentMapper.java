@@ -8,6 +8,6 @@ public interface CommentMapper {
   public List<Comment> getCommentlist(int no);
   public Comment getComment(int no);
   public void deleteComment(int no);
-  public void insertComment(Comment comment);
+  public int insertComment(Comment comment);
   public void modifyComment(Comment comment);
 }
