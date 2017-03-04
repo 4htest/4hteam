@@ -6,7 +6,7 @@ public class Comment {
   private int comment_no;
   private int post_no;
   private String content;
-  private Date createdDate;
+  private String createdDate;
   public int getComment_no() {
     return comment_no;
   }
@@ -25,10 +25,10 @@ public class Comment {
   public void setContent(String content) {
     this.content = content;
   }
-  public Date getCreatedDate() {
+  public String getCreatedDate() {
     return createdDate;
   }
-  public void setCreatedDate(Date createdDate) {
+  public void setCreatedDate(String createdDate) {
     this.createdDate = createdDate;
   }
   @Override

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from './reply.component.css';
 
 export default class ReplyComponent extends React.Component {
@@ -34,7 +33,8 @@ export default class ReplyComponent extends React.Component {
 	}
 
 	delete(item) {
-		this.props.replyDelete(this.props.data.indexOf(item));
+		//this.props.replyDelete(this.props.data.indexOf(item));
+		this.props.replyDelete(item);
   	}
 
   	update(item) {
@@ -54,6 +54,10 @@ export default class ReplyComponent extends React.Component {
 		});
   	}
 
+  	test() {
+  		console.log(1);
+  	}
+
 
 	render() {
 		const btn = "waves-effect waves-light btn " + styles.button;
@@ -71,7 +75,7 @@ export default class ReplyComponent extends React.Component {
 		                </a>
 		                <ul id={`dropdown-${this.props.i.comment_no}`} className='dropdown-content'>
 		                    <li><a onClick={this.toggleClick}>Edit</a></li>
-		                    <li><a onClick={this.delete.bind(this, this.props.i)}>Remove</a></li>
+		                    <li><a onClick={this.delete.bind(this, this.props.i.comment_no)}>Remove</a></li>
 		                </ul>
 		            </div>
                 </div>
@@ -103,18 +107,13 @@ export default class ReplyComponent extends React.Component {
 		);
 	}
 
-	componentDidUpdate() {
-        // WHEN COMPONENT UPDATES, INITIALIZE DROPDOWN
-        // (TRIGGERED WHEN LOGGED IN)
+    componentDidMount() {
         $('#dropdown-button-'+this.props.i.comment_no).dropdown({
             belowOrigin: true // Displays dropdown below the button
         });
     }
- 
-    componentDidMount() {
-        // WHEN COMPONENT MOUNTS, INITIALIZE DROPDOWN
-        // (TRIGGERED WHEN REFRESHED)
-        $('#dropdown-button-'+this.props.i.comment_no).dropdown({
+    componentDidUpdate() {
+		$('#dropdown-button-'+this.props.i.comment_no).dropdown({
             belowOrigin: true // Displays dropdown below the button
         });
     }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import styles from './reply-create.component.css';
 
 export default class ReplyCreateComponent extends React.Component {
@@ -7,23 +6,66 @@ export default class ReplyCreateComponent extends React.Component {
 		super(props);
 
 		this.state = {
-			value:''
+			value:'',
+			insertData: {
+				content: '',
+				post_no: 1,
+				createdDate: '2017-02-22'
+			}
 		};
 
 		this.handleChange = this.handleChange.bind(this);
   		this.handleSubmit = this.handleSubmit.bind(this);
+  		this.getTimeStamp = this.getTimeStamp.bind(this);
+  		this.leadingZeros = this.leadingZeros.bind(this);
 	}
 
 	handleChange(event) {
 	    this.setState({value: event.target.value});
 	}
 
+	getTimeStamp() {
+	  let d = new Date().format("yyyy-MM-dd");
+	  console.log(d);
+
+	  // let stamp =
+	  //   this.leadingZeros(d.getFullYear(), 4) + '-' +
+	  //   this.leadingZeros(d.getMonth() + 1, 2) + '-' +
+	  //   this.leadingZeros(d.getDate(), 2) + ' ' +
+
+	  //   this.leadingZeros(d.getHours(), 2) + ':' +
+	  //   this.leadingZeros(d.getMinutes(), 2) + ':' +
+	  //   this.leadingZeros(d.getSeconds(), 2);
+
+	  return d;
+	}
+
+
+
+	leadingZeros(n, digits) {
+		let zero = '';
+	  	n = n.toString();
+
+		if (n.length < digits) {
+		  for (let i = 0; i < digits - n.length; i++)
+		    zero += '0';
+		}
+		return zero + n;
+	}
+
+
   	handleSubmit(event) {
 	    event.preventDefault();
-	    this.props.replyInsert({content: this.state.value,
-	    						comment_no: 6,
-	    						createdDate: "2017-02-22 13:35:34",
-	    						post_no: 1 });
+	    this.setState({
+	    	insertData: {
+	    		content: this.state.value,
+	    		post_no: 1,
+	    		createdDate: this.getTimeStamp()
+	    	}
+	    }, () => {
+	    	this.props.replyInsert(this.state.insertData);
+			this.setState({value: ''});
+	    })
 	}
 
 	render() {

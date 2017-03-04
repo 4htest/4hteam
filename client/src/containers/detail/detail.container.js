@@ -1,5 +1,5 @@
 import React from 'react';
-import {PostingComponent, ReplyListComponent} from '../../components';
+import { ReplyListComponent, PostingComponent } from '../../components';
 import styles from './detail.container.css';
 
 import { connect } from 'react-redux';
@@ -10,12 +10,12 @@ import { replyDeleteRequest, replyInsertRequest, replyUpdateRequest, replyListRe
 class DetailContainer extends React.Component {
 	constructor(props) {
 		super(props);
+		this.props.replyList(1);
 	}
 
-	componentDidUpdate() {
-		// console.log(this.props.params.categoryName)
-		// this.props.replyList(this.props.params.categoryName)
-	}
+	/*componentDidUpdate() {
+		console.log(this.props.params.categoryName)
+	}*/
 
 	render() {
 		console.log(this.state)
@@ -35,7 +35,7 @@ class DetailContainer extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         reply: state.reply.list
     };
