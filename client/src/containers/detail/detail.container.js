@@ -1,5 +1,5 @@
 import React from 'react';
-import {PostingComponent, ReplyListComponent, PreveiwComponent} from '../../components';
+import { ReplyListComponent, PostingComponent } from '../../components';
 import styles from './detail.container.css';
 
 import { connect } from 'react-redux';
@@ -22,9 +22,6 @@ class DetailContainer extends React.Component {
 			<div className={styles.detail}>
 				<h2>detail container</h2>
 				<PostingComponent />
-				<ul>
-                    <PreviewPostListComponent list={this.props.data} />
-                </ul>
 				<ReplyListComponent
 					data={this.props.reply.data}
 					replyDelete={this.props.replyDelete}
