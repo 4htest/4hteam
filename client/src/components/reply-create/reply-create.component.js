@@ -25,18 +25,19 @@ export default class ReplyCreateComponent extends React.Component {
 	}
 
 	getTimeStamp() {
-	  let d = new Date();
+	  let d = new Date().format("yyyy-MM-dd");
+	  console.log(d);
 
-	  let stamp =
-	    this.leadingZeros(d.getFullYear(), 4) + '-' +
-	    this.leadingZeros(d.getMonth() + 1, 2) + '-' +
-	    this.leadingZeros(d.getDate(), 2) + ' ' +
+	  // let stamp =
+	  //   this.leadingZeros(d.getFullYear(), 4) + '-' +
+	  //   this.leadingZeros(d.getMonth() + 1, 2) + '-' +
+	  //   this.leadingZeros(d.getDate(), 2) + ' ' +
 
-	    this.leadingZeros(d.getHours(), 2) + ':' +
-	    this.leadingZeros(d.getMinutes(), 2) + ':' +
-	    this.leadingZeros(d.getSeconds(), 2);
+	  //   this.leadingZeros(d.getHours(), 2) + ':' +
+	  //   this.leadingZeros(d.getMinutes(), 2) + ':' +
+	  //   this.leadingZeros(d.getSeconds(), 2);
 
-	  return stamp;
+	  return d;
 	}
 
 

@@ -54,6 +54,10 @@ export default class ReplyComponent extends React.Component {
 		});
   	}
 
+  	test() {
+  		console.log(1);
+  	}
+
 
 	render() {
 		const btn = "waves-effect waves-light btn " + styles.button;
