@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
  
 // Container Components
-import { AppContainer, MainContainer, DetailContainer, CategoryContainer } from './containers';
+import { AppContainer, MainContainer, DetailContainer, CategoryContainer, CreatePageContainer } from './containers';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -26,6 +26,7 @@ ReactDOM.render(
 		    	<Route path='detail' component={DetailContainer} />
 		    	<Route path='/:categoryName' component={CategoryContainer} />
 		    	<Route path='/:categoryName/:id' component={CategoryContainer} />
+		    	<Route path='createpage' component={CreatePageContainer} />
 		    </Route>
 		</Router>
 	</Provider>, rootElement
