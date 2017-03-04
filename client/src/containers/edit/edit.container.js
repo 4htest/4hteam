@@ -22,41 +22,21 @@ class DetailContainer extends React.Component {
 		return (
 			<div className={styles.detail}>
 				<h2>detail container</h2>
-				<PostingComponent />
 				<ul>
-                    <PreviewPostListComponent list={this.props.data} />
+                    <PreviewPostComponent list={this.props.data} />
                 </ul>
-				<ReplyListComponent
-					data={this.props.reply.data}
-					replyDelete={this.props.replyDelete}
-					replyUpdate={this.props.replyUpdate}
-					replyInsert={this.props.replyInsert} 
-				/>
 			</div>
 		);
 	}
 }
 
-
-let mapStateToProps = (state) => {
-    return {
-        reply: state.reply.list
-    };
-};
-
 let mapDispatchToProps = (dispatch) => {
     return {
         replyDelete: (state) => {
-            return dispatch(replyDeleteRequest(state));
+            return dispatch(previewpostDeleteRequest(state));
         },
         replyUpdate: (state) => {
-            return dispatch(replyUpdateRequest(state));
-        },
-        replyInsert: (state) => {
-            return dispatch(replyInsertRequest(state));
-        },
-        replyList: (state) => {
-        	return dispatch(replyListRequest(state));
+            return dispatch(previewpostUpdateRequest(state));
         }
     }
 }

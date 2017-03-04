@@ -7,8 +7,9 @@ import ReplyListComponent from './reply-list/reply-list.component';
 import CategoryListComponent from './category-list/category-list.component';
 import CategoryComponent from './category/category.component';
 import CategoryCreateComponent from './category-create/category-create.component';
-import PreviewPost
+import PreviewPostComponent from './previewpost/previewpost.component';
+import PreviewPostListComponent from './previewpost-list/previewpost-list.component.js';
 
 export { HeaderComponent, SideBarComponent, PostingComponent, 
 	ReplyComponent, ReplyListComponent, ReplyCreateComponent, CategoryListComponent, CategoryComponent,
-	CategoryCreateComponent };
+	CategoryCreateComponent, PreviewPostComponent, PreviewPostListComponent };
