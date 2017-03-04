@@ -1,0 +1,60 @@
+/* reply */
+ 
+.reply .rbody {
+    position: relative;
+}
+
+.reply .info {
+    font-size: 18px;
+    color: #90A4AE;
+}
+ 
+.reply .info .username {
+    color: #263238;
+    font-weight: bold;
+}
+ 
+.iconButton {
+    color: #9e9e9e;
+    cursor: pointer;
+}
+ 
+.iconButton:hover {
+    color: #C5C5C5;
+}
+ 
+.iconButton:hover {
+    color: #C5C5C5;
+}
+ 
+.iconButton:active {
+    color: #ff9800;
+}
+ 
+.reply .optionbutton {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.button {
+    position: relative;
+    left: 85%;
+}
+
+.reply .rContent {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+ 
+.rAction {
+    text-align: right;
+    cursor : pointer;
+    margin-bottom: 20px;
+}
+
+.reply .date {
+    font-size: 12px;
+    margin-left: 10px;
+}
+

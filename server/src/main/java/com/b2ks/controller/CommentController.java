@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,12 +23,12 @@ public class CommentController {
   CommentService commentService;
   
   @RequestMapping(value = "/api/get/comments", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String getCommentlist() {
+  public @ResponseBody String getCommentlist(int id) {
 
     List<Comment> commentList;
     HashMap<String,Object> result;
     try {
-      commentList = commentService.getCommentlist();
+      commentList = commentService.getCommentlist(id);
       
       result = new HashMap<>();
       result.put("list", commentList);
@@ -62,10 +63,11 @@ public class CommentController {
   
 
   @RequestMapping(value = "/api/delete/comment", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String deleteComment(int id) {
+  public @ResponseBody String deleteComment(@RequestBody Comment state) {
     JSONObject result;
+    System.out.println(state.getComment_no());
     try {
-    commentService.deleteComment(id);
+    commentService.deleteComment(state.getComment_no());
     result = new JSONObject();
     result.put("result", "success");
     return JSONObject.valueToString(result);
@@ -77,15 +79,18 @@ public class CommentController {
   }
   
   @RequestMapping(value = "/api/insert/comment", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String insertComment(int post_id, String content) {
+  public @ResponseBody String insertComment(@RequestBody Comment state) {
     JSONObject result;
+    System.out.println(state);
     try {
       result = new JSONObject();
       Comment comment = new Comment();
-      comment.setPost_no(post_id);
-      comment.setContent(content);
+      comment.setPost_no(state.getPost_no());
+      comment.setContent(state.getContent());
+      comment.setCreatedDate(state.getCreatedDate());
       commentService.insertComment(comment);
-      
+      System.out.println(comment.getComment_no());
+      result.put("comment_no", comment.getComment_no());
       result.put("result", "success");
       return JSONObject.valueToString(result);
     } catch (Exception e) {
@@ -97,13 +102,13 @@ public class CommentController {
   }    
   
   @RequestMapping(value = "/api/modify/comment", method = {RequestMethod.GET, RequestMethod.POST}, produces = "application/json")
-  public @ResponseBody String modifyComment(int id, String content) {
+  public @ResponseBody String modifyComment(@RequestBody Comment state) {
     JSONObject result;
     try {
       result = new JSONObject();
       Comment comment = new Comment();
-      comment.setComment_no(id);
-      comment.setContent(content);
+      comment.setComment_no(state.getComment_no());
+      comment.setContent(state.getContent());
       commentService.modifyComment(comment);
       
       result.put("result", "success");

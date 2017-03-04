@@ -1,6 +1,5 @@
 package com.b2ks.service;
  
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,8 @@ public class CommentService {
     @Autowired
     CommentMapper commentMapper;
  
-    public List<Comment> getCommentlist() throws Exception{
-      HashMap<String,Object> paramMap = new HashMap<>();
-      return commentMapper.getCommentlist(paramMap);
+    public List<Comment> getCommentlist(int no) {
+      return commentMapper.getCommentlist(no);
     }
 
     public Comment getComment(int no) {
@@ -28,8 +26,8 @@ public class CommentService {
       commentMapper.deleteComment(no);
     }
 
-    public void insertComment(Comment comment) {
-      commentMapper.insertComment(comment);
+    public int insertComment(Comment comment) {
+      return commentMapper.insertComment(comment);
     }
 
     public void modifyComment(Comment comment) {
