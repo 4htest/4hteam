@@ -23,9 +23,6 @@ class DetailContainer extends React.Component {
 			<div className={styles.detail}>
 				<h2>detail container</h2>
 				<PostingComponent />
-				<ul>
-                    <PreviewPostListComponent list={this.props.data} />
-                </ul>
 				<ReplyListComponent
 					data={this.props.reply.data}
 					replyDelete={this.props.replyDelete}
