@@ -17,7 +17,7 @@ const initialState = {
     list: {
         status: 'INIT',
         data: [
-            {
+            /*{
                 "comment_no": "1",
                 "content": "blablabla111",
                 "createdDate": "2017-02-21 13:33:23",
@@ -46,7 +46,7 @@ const initialState = {
                 "content": "blablabla555",
                 "createdDate": "2017-02-25 13:33:27",
                 "post_no": "1"
-            }
+            }*/
         ]
     }
 };
@@ -55,6 +55,7 @@ export default function reply(state, action) {
     if(typeof state === "undefined") {
         state = initialState;
     }
+
 
     switch(action.type) {
     case types.REPLY_INSERT:
@@ -68,6 +69,10 @@ export default function reply(state, action) {
     case types.REPLY_INSERT_SUCCESS:
         return {
             ...state,
+            insert: {
+                status: 'SUCCESS',
+                error: -1
+            }, 
             list: {
                 status: 'SUCCESS',
                 data: [
@@ -97,10 +102,10 @@ export default function reply(state, action) {
             ...state,
             list: {
                 status: 'SUCCESS',
-                //data: action.data.list
-                data: [
+                data: action.data.list
+                /*data: [
                     ...state.list.data
-                ]
+                ]*/
             }
         };
     case types.REPLY_LIST_FAILURE:
@@ -122,13 +127,15 @@ export default function reply(state, action) {
     case types.REPLY_DELETE_SUCCESS:
         return {
             ...state,
-            list: {
-                ...state.list,
+            delete: {
                 status: 'SUCCESS',
-                ...state.list.data.splice(action.data, 1)
+                error: -1
+            },
+            list: {
+                status: 'SUCCESS',
+                data: state.list.data.filter(data => data.comment_no !== action.data)
             }
         }
-
     case types.REPLY_DELETE_FAILURE:
         return {
             ...state,
@@ -148,6 +155,10 @@ export default function reply(state, action) {
     case types.REPLY_UPDATE_SUCCESS:
         return {
             ...state,
+            update: {
+                status: 'SUCCESS',
+                error: -1
+            },
             list: {
                 ...state.list,
                 status: 'SUCCESS',
@@ -168,31 +179,3 @@ export default function reply(state, action) {
     }
 }
 
- 
-/*export default function reply (state = initialState, action) {
-    switch(action.type) {
-        case CREATE:
-            return update(state, {
-               data: {
-                        $push: [{content: action.content}]
-                    }
-            });
-        case DELETE:
-            return update(state, {
-               data: {
-                        $splice: [[state.data.indexOf(action.index), 1]]
-                    }
-            });
-        case UPDATE:
-            return update(state, {
-               data: {
-                        [state.data.indexOf(action.index)]: {
-                            content: { $set: action.content }
-                        }
-                    }
-            });    
-        default:
-            return state;
-    }
-};
-*/
