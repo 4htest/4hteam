@@ -1,0 +1,35 @@
+.iconButton {
+    color: #9e9e9e;
+    cursor: pointer;
+    font-size: 25px;
+}
+ 
+.iconButton:hover {
+    color: #C5C5C5;
+} 
+ 
+.iconButton:active {
+    color: #ff9800;
+}
+
+.dropList {
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	cursor : pointer;
+	z-index: 1;
+    background-color: white;
+    position: absolute;
+    width: 100px;
+    margin-left: -35px;
+}
+
+.dropList li:hover {
+    background-color: #D8D8D8;
+}
+
+.dropList li span {
+    margin: 3px 10px 3px 10px;
+}
+
+.dropContainer {
+ 
+}
