@@ -25,19 +25,18 @@ export default class ReplyCreateComponent extends React.Component {
 	}
 
 	getTimeStamp() {
-	  let d = new Date().format("yyyy-MM-dd");
-	  console.log(d);
+	  let d = new Date();
 
-	  // let stamp =
-	  //   this.leadingZeros(d.getFullYear(), 4) + '-' +
-	  //   this.leadingZeros(d.getMonth() + 1, 2) + '-' +
-	  //   this.leadingZeros(d.getDate(), 2) + ' ' +
+	    let stamp =
+	      this.leadingZeros(d.getFullYear(), 4) + '-' +
+	      this.leadingZeros(d.getMonth() + 1, 2) + '-' +
+	      this.leadingZeros(d.getDate(), 2) + ' ' +
 
-	  //   this.leadingZeros(d.getHours(), 2) + ':' +
-	  //   this.leadingZeros(d.getMinutes(), 2) + ':' +
-	  //   this.leadingZeros(d.getSeconds(), 2);
+	      this.leadingZeros(d.getHours(), 2) + ':' +
+	      this.leadingZeros(d.getMinutes(), 2) + ':' +
+	      this.leadingZeros(d.getSeconds(), 2);
 
-	  return d;
+	  return stamp;
 	}
 
 
@@ -69,20 +68,16 @@ export default class ReplyCreateComponent extends React.Component {
 	}
 
 	render() {
-		const btn = "waves-effect waves-light btn " + styles.button;
+		const btn = "waves-effect waves-light btn";
 
 		return (
 			<div className={styles.createReplyDiv}>
-				<br />
-				<form className={styles.createForm} onSubmit={this.handleSubmit}>
-					<div className={styles.createText}>
-				        <label>
-				          comment:
-				          <textarea value={this.state.value} onChange={this.handleChange} />
-				        </label>
-			        </div>
-			        <input className={btn} type="submit" value="Submit" />
-		     	</form>
+				<div className={styles.createText}>
+		 	        <textarea value={this.state.value} onChange={this.handleChange} />
+		        </div>
+		        <div className={styles.createButton}>
+		        	<input type="submit" value="submit" className={btn} onClick={this.handleSubmit} />
+		        </div>
 			</div>
 		);
 	}
