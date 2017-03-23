@@ -68,20 +68,16 @@ export default class ReplyCreateComponent extends React.Component {
 	}
 
 	render() {
-		const btn = "waves-effect waves-light btn " + styles.button;
+		const btn = "waves-effect waves-light btn";
 
 		return (
 			<div className={styles.createReplyDiv}>
-				<br />
-				<form className={styles.createForm} onSubmit={this.handleSubmit}>
-					<div className={styles.createText}>
-				        <label>
-				          comment:
-				          <textarea value={this.state.value} onChange={this.handleChange} />
-				        </label>
-			        </div>
-			        <input className={btn} type="submit" value="Submit" />
-		     	</form>
+				<div className={styles.createText}>
+		 	        <textarea value={this.state.value} onChange={this.handleChange} />
+		        </div>
+		        <div className={styles.createButton}>
+		        	<input type="submit" value="submit" className={btn} onClick={this.handleSubmit} />
+		        </div>
 			</div>
 		);
 	}

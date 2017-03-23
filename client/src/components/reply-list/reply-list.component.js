@@ -14,6 +14,7 @@ export default class ReplyListComponent extends React.Component {
 			return data.map(i => {
 				return (
 					<Reply i={i}
+						   key={this.props.i.comment_no}
 						   data={this.props.data}
 						   replyDelete={this.props.replyDelete}
 					       replyUpdate={this.props.replyUpdate} />

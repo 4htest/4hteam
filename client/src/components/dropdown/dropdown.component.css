@@ -20,6 +20,12 @@
     position: absolute;
     width: 100px;
     margin-left: -35px;
+    border-radius: 5px;
+}
+
+.dropList li {
+    height: 40px;
+    padding: 5px;
 }
 
 .dropList li:hover {

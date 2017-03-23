@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './reply.component.css';
-import Dropdown from '../dropdown/dropdown.component.js'
+import Dropdown from '../dropdown/dropdown.component.js';
+import DropdownItem from '../dropdown/dropdown-item.component';
 
 export default class ReplyComponent extends React.Component {
 	constructor(props) {
@@ -21,7 +22,7 @@ export default class ReplyComponent extends React.Component {
 		
 		this.handleChange = this.handleChange.bind(this);
   		this.toggleClick = this.toggleClick.bind(this);
-  		this.delete = this.delete.bind(this, this.props.i.comment_no);
+		console.log(this.props.i.comment_no);
 	}
 
 	toggleClick() {
@@ -35,6 +36,7 @@ export default class ReplyComponent extends React.Component {
 	}
 
 	delete(item) {
+		console.log(item);
 		this.props.replyDelete(item);
   	}
 
@@ -66,9 +68,14 @@ export default class ReplyComponent extends React.Component {
                 <div className={styles.info}>
                     <a className={styles.username}>Anonymous</a><span className={styles.date}>{this.props.i.createdDate}</span>
                     <div className={styles.dropdown}>
-                    	<Dropdown i={this.props.i}
-                    		  	  toggleClick = {this.toggleClick}
-                    		  	  delete = {this.delete} />
+                    	<Dropdown>
+                    		<DropdownItem onClick = {this.delete.bind(this, this.props.i.comment_no)}>
+                    			remove
+                    		</DropdownItem>
+                    		<DropdownItem onClick = {this.toggleClick}>
+                    			update
+                    		</DropdownItem>
+                     	</Dropdown>
                     </div>
                 </div>
                 <div className={rContent}>
@@ -90,6 +97,7 @@ export default class ReplyComponent extends React.Component {
 			</div>
 		);
 
+		
 		return (
 			<li>
 				<div className={styles.reply}>

@@ -9,28 +9,32 @@ export default class DropdownComponent extends React.Component {
 		}
 	}
 
+	droplist() {
+		return this.props.children.map(item => item);
+	};
+
 	render() {
-		const dropListView = (
-			<ul className={styles.dropList}>
-				<li><span onClick={() => { 
-					this.props.delete();
-					this.setState({
-						clicked: !(this.state.clicked)
+        const dropListView = (
+			<ul className={styles.dropList} 
+				onClick={() => {
+					this.setState({ 
+						clicked: !(this.state.clicked) 
 					});
 				}}>
-					Remove
-				</span></li>
-  				<li><span onClick={this.props.toggleClick}>Edit</span></li>
+				{this.droplist()}
             </ul>
         );
 
 		return (
 			<div className={styles.dropContainer}>
-				<span className={styles.iconButton} onClick={() => {
-					this.setState({
-						clicked: !(this.state.clicked)
-					})
-				}}>...</span>
+				<span className={styles.iconButton} 
+					  onClick={() => { 
+						  this.setState({
+						  	  clicked: !(this.state.clicked)
+						  });
+					  }}>
+					...
+				</span>
 				{ this.state.clicked ? dropListView : <div></div> }
 			</div>	
 		);

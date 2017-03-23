@@ -7,18 +7,17 @@
 }
 
 .createReplyDiv {
-	position: relative;
+	display: flex;
+    flex-direction: row;
+    align-items: center;
 	height: 150px;
 }
 
-.createForm {
-	position: relative;
-	height: 200px;
+.createText {
+	flex-grow: 40;
 }
 
-.createText {
-	position: relative;
-    width: 80%;
-    min-width: 400px;
-    float: left;
+.createButton {
+    flex-grow: 1;
+    padding-left: 10px;
 }
